@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2019 GridGain Systems, Inc. and Contributors.
+
+ Licensed under the GridGain Community Edition License (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     https://www.gridgain.com/products/software/community-edition/gridgain-community-edition-license
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gridgain</groupId>
+  <artifactId>ignite-core</artifactId>
+  <version>8.8.20</version>
+  <description>Java-based middleware for in-memory processing of big data in a distributed environment.</description>
+  <url>http://ignite.apache.org</url>
+  <organization>
+    <name>The Apache Software Foundation</name>
+    <url>http://www.apache.org/</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>dsetrakyan</id>
+      <name>Dmitriy Setrakyan</name>
+      <email>dsetrakyan at apache dot org</email>
+    </developer>
+    <developer>
+      <id>agoncharuk</id>
+      <name>Alexey Goncharuk</name>
+      <email>agoncharuk at apache dot org</email>
+    </developer>
+    <developer>
+      <id>vkulichenko</id>
+      <name>Valentin Kulichenko</name>
+      <email>vkulichenko at apache dot org</email>
+    </developer>
+    <developer>
+      <id>svladykin</id>
+      <name>Sergi Vladykin</name>
+      <email>sergi dot vladykin at gmail dot com</email>
+    </developer>
+    <developer>
+      <id>yzhdanov</id>
+      <name>Yakov Zhdanov</name>
+      <email>yzhdanov at apache dot org</email>
+    </developer>
+    <developer>
+      <id>sboikov</id>
+      <name>Semyon Boikov</name>
+      <email>sboikov at gridgain dot com</email>
+    </developer>
+    <developer>
+      <id>vozerov</id>
+      <name>Vladimir Ozerov</name>
+      <email>vozerov at gridgain dot com</email>
+    </developer>
+  </developers>
+  <mailingLists>
+    <mailingList>
+      <name>Ignite Dev List</name>
+      <subscribe>dev-subscribe@ignite.apache.org</subscribe>
+      <unsubscribe>dev-unsubscribe@ignite.apache.org</unsubscribe>
+      <post>dev@ignite.apache.org</post>
+      <archive>http://mail-archives.apache.org/mod_mbox/ignite-dev</archive>
+    </mailingList>
+  </mailingLists>
+  <scm>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/maven/pom/tags/apache-16/community.parent/ignite-core</connection>
+    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/pom/tags/apache-16/community.parent/ignite-core</developerConnection>
+    <url>http://svn.apache.org/viewvc/maven/pom/tags/apache-16/community.parent/ignite-core</url>
+  </scm>
+  <issueManagement>
+    <system>jira</system>
+    <url>http://issues.apache.org/jira/browse/IGNITE</url>
+  </issueManagement>
+  <distributionManagement>
+    <repository>
+      <id>apache.releases.https</id>
+      <name>Apache Release Distribution Repository</name>
+      <url>https://repository.apache.org/service/local/staging/deploy/maven2</url>
+    </repository>
+    <snapshotRepository>
+      <id>apache.snapshots.https</id>
+      <name>Apache Development Snapshot Repository</name>
+      <url>https://repository.apache.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  <properties>
+    <jaxb.impl.version>2.1.14</jaxb.impl.version>
+    <camel.version>2.22.3</camel.version>
+    <jmh.version>1.13</jmh.version>
+    <scala210.library.version>2.10.7</scala210.library.version>
+    <javax.cache.tck.version>1.1.0</javax.cache.tck.version>
+    <osgi.import.package>javax.enterprise.util;resolution:=optional,
+            !com.sun.jmx.mbeanserver,
+            *</osgi.import.package>
+    <osgi.fail.ok>false</osgi.fail.ok>
+    <hamcrest.version>2.2</hamcrest.version>
+    <ignite.orig.edition>apache-ignite</ignite.orig.edition>
+    <javadoc.opts>-Xdoclint:none</javadoc.opts>
+    <postgres.connector.version>42.2.23</postgres.connector.version>
+    <maven.build.timestamp.format>MMMM d yyyy</maven.build.timestamp.format>
+    <spark.hadoop.version>2.8.5</spark.hadoop.version>
+    <slf4j16.version>1.6.4</slf4j16.version>
+    <jnr.posix.version>3.0.50</jnr.posix.version>
+    <spring-5.2.version>5.2.21.RELEASE</spring-5.2.version>
+    <checkstyle.puppycrawl.version>8.29</checkstyle.puppycrawl.version>
+    <gson.version>2.8.2</gson.version>
+    <flume.ng.version>1.7.0</flume.ng.version>
+    <update.notifier.enabled.by.default>true</update.notifier.enabled.by.default>
+    <lucene.version>8.11.1</lucene.version>
+    <maven.bundle.plugin.version>3.5.0</maven.bundle.plugin.version>
+    <jackson.databind.version>2.13.3</jackson.databind.version>
+    <httpclient.version>4.5.13</httpclient.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <twitter.hbc.version>2.2.0</twitter.hbc.version>
+    <spring41.osgi.feature.version>4.1.7.RELEASE_1</spring41.osgi.feature.version>
+    <spark24.version>2.4.4</spark24.version>
+    <jetbrains.annotations.version>16.0.3</jetbrains.annotations.version>
+    <commons.io.version>2.6</commons.io.version>
+    <ignite.update.notifier.product>gridgain-community</ignite.update.notifier.product>
+    <sourceReleaseAssemblyDescriptor>source-release</sourceReleaseAssemblyDescriptor>
+    <javax.cache.bundle.version>1.0.0_1</javax.cache.bundle.version>
+    <maven.javadoc.plugin.version>2.10.4</maven.javadoc.plugin.version>
+    <netlibjava.version>1.1.2</netlibjava.version>
+    <apache.thrift>0.12.0</apache.thrift>
+    <mockito.version>3.4.6</mockito.version>
+    <jna.version>4.5.2</jna.version>
+    <spark24.hadoop.version>2.8.5</spark24.hadoop.version>
+    <org.testcontainers.testcontainers>1.12.3</org.testcontainers.testcontainers>
+    <aws.sdk.version>1.12.175</aws.sdk.version>
+    <yammer.metrics.annotation.version>2.2.0</yammer.metrics.annotation.version>
+    <netty.version>4.1.77.Final</netty.version>
+    <maven.checkstyle.plugin.version>3.1.1</maven.checkstyle.plugin.version>
+    <snappy.version>1.1.8.4</snappy.version>
+    <tyrus.standalon.client.version>1.15</tyrus.standalon.client.version>
+    <oro.bundle.version>2.0.8_6</oro.bundle.version>
+    <organization.logo>http://www.apache.org/images/asf_logo_wide.gif</organization.logo>
+    <lz4.version>1.8.0</lz4.version>
+    <spring.data-2.2.version>2.2.13.RELEASE</spring.data-2.2.version>
+    <storm.version>1.2.3</storm.version>
+    <osgi.export.package>org.apache.ignite.*,
+            org.jsr166.*;version=1.0.0;
+            {local-packages}</osgi.export.package>
+    <doxygen.exec>doxygen</doxygen.exec>
+    <javax.cache.version>1.0.0</javax.cache.version>
+    <ezmorph.version>1.0.6</ezmorph.version>
+    <osgi.enterprise.version>5.0.0</osgi.enterprise.version>
+    <karaf.version>4.0.2</karaf.version>
+    <opencensus.version>0.28.2</opencensus.version>
+    <jtidy.version>r938</jtidy.version>
+    <scala.library.version>2.11.12</scala.library.version>
+    <jotm.version>2.2.3</jotm.version>
+    <osgi.core.version>5.0.0</osgi.core.version>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <hadoop.version>2.9.2</hadoop.version>
+    <gpg.useagent>true</gpg.useagent>
+    <osgi.embed.transitive>false</osgi.embed.transitive>
+    <commons.collections.version>3.2.2</commons.collections.version>
+    <scala210.jline.version>2.10.7</scala210.jline.version>
+    <yardstick.version>0.8.3</yardstick.version>
+    <aws.sdk.bundle.version>1.12.175</aws.sdk.bundle.version>
+    <cron4j.version>2.2.5</cron4j.version>
+    <scala.test.version>2.2.6</scala.test.version>
+    <guava.version>25.1-jre</guava.version>
+    <aspectj.version>1.9.8</aspectj.version>
+    <lucene.bundle.version>7.4.0_1</lucene.bundle.version>
+    <jsch.version>0.1.54</jsch.version>
+    <commons.dbcp.version>1.4</commons.dbcp.version>
+    <distMgmtSnapshotsName>Apache Development Snapshot Repository</distMgmtSnapshotsName>
+    <bouncycastle.version>1.68</bouncycastle.version>
+    <kafka.version>2.2.2</kafka.version>
+    <zstd.version>1.5.0-4</zstd.version>
+    <easymock.version>3.4</easymock.version>
+    <httpcore.version>4.4.3</httpcore.version>
+    <jboss.rmi.version>1.0.6.Final</jboss.rmi.version>
+    <jetty.version>9.4.43.v20210629</jetty.version>
+    <gridgain.version>8.8.20</gridgain.version>
+    <aws.encryption.sdk.version>2.4.0</aws.encryption.sdk.version>
+    <arguments></arguments>
+    <commons.beanutils.bundle.version>1.9.2_1</commons.beanutils.bundle.version>
+    <slf4j.version>1.7.32</slf4j.version>
+    <commons.lang3.version>3.9</commons.lang3.version>
+    <aopalliance.bundle.version>1.0_6</aopalliance.bundle.version>
+    <git.exec>git</git.exec>
+    <distMgmtSnapshotsUrl>https://repository.apache.org/content/repositories/snapshots</distMgmtSnapshotsUrl>
+    <jaxb.api.version>2.1</jaxb.api.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <awaitility.version>3.1.6</awaitility.version>
+    <mysql.connector.version>8.0.13</mysql.connector.version>
+    <aspectj.bundle.version>1.9.8</aspectj.bundle.version>
+    <rocketmq.version>4.4.0</rocketmq.version>
+    <yammer.metrics.core.version>2.2.0</yammer.metrics.core.version>
+    <guava.retrying.version>2.0.0</guava.retrying.version>
+    <commons.beanutils.version>1.9.4</commons.beanutils.version>
+    <log4j.version>2.17.1</log4j.version>
+    <zkclient.version>0.5</zkclient.version>
+    <commons.codec.version>1.15</commons.codec.version>
+    <jsonlib.bundle.version>2.4_1</jsonlib.bundle.version>
+    <activemq.version>5.12.0</activemq.version>
+    <paho.version>1.0.2</paho.version>
+    <jackson1.version>1.9.13</jackson1.version>
+    <javassist.version>3.21.0-GA</javassist.version>
+    <ignite.edition>apache-ignite</ignite.edition>
+    <jackson.version>2.13.3</jackson.version>
+    <spring.version>5.2.21.RELEASE</spring.version>
+    <failIfNoTests>false</failIfNoTests>
+    <ezmorph.bundle.version>1.0.6_1</ezmorph.bundle.version>
+    <docfx.exec>docfx</docfx.exec>
+    <spark.version>2.3.3</spark.version>
+    <curator.test.version>2.9.1</curator.test.version>
+    <jsonlib.version>2.4</jsonlib.version>
+    <curator.version>4.2.0</curator.version>
+    <commons.compress.version>1.20</commons.compress.version>
+    <reflections.version>0.11.7</reflections.version>
+    <asm.version>4.2</asm.version>
+    <zookeeper.version>3.4.14</zookeeper.version>
+    <tomcat.version>9.0.62</tomcat.version>
+    <jsch.bundle.version>0.1.54_1</jsch.bundle.version>
+    <jms.spec.version>1.1.1</jms.spec.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>cn.mysuper</groupId>
+      <artifactId>my-super-service</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.10.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>25.1-jre</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.thrift</groupId>
+      <artifactId>libthrift</artifactId>
+      <version>0.12.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.cache</groupId>
+      <artifactId>cache-api</artifactId>
+      <version>1.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>16.0.3</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gridgain</groupId>
+      <artifactId>ignite-shmem</artifactId>
+      <version>8.7.3</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <repository>
+      <id>ignite-binaries-test-repo</id>
+      <url>file:///Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/test/binaries/repo</url>
+    </repository>
+    <repository>
+      <id>GridGain External Repository</id>
+      <url>https://www.gridgainsystems.com/nexus/content/repositories/external</url>
+    </repository>
+    <repository>
+      <id>JacobORG Legacy Repository</id>
+      <url>https://repository.ow2.org/nexus/content/repositories/ow2-legacy</url>
+    </repository>
+    <repository>
+      <id>apache.snapshots</id>
+      <url>https://repository.apache.org/snapshots/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </pluginRepository>
+  </pluginRepositories>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/apache-ignite.iml" filepath="$PROJECT_DIR$/apache-ignite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/core/ignite-core.iml" filepath="$PROJECT_DIR$/modules/core/ignite-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/schedule/ignite-schedule.iml" filepath="$PROJECT_DIR$/modules/schedule/ignite-schedule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/my-super-service/my-super-service.iml" filepath="$PROJECT_DIR$/modules/my-super-service/my-super-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/my-super-service-impl/my-super-service-impl.iml" filepath="$PROJECT_DIR$/modules/my-super-service-impl/my-super-service-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/my-thin-client/my-thin-client.iml" filepath="$PROJECT_DIR$/modules/my-thin-client/my-thin-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/my-thin-client-service/my-thin-client-service.iml" filepath="$PROJECT_DIR$/modules/my-thin-client-service/my-thin-client-service.iml" />
+    </modules>
+  </component>
+</project>

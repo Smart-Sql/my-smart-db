@@ -1,0 +1,10 @@
+org/gridgain/myservice/MySqlAstImpl.class
+org/gridgain/myservice/MyInitFuncImpl.class
+org/gridgain/myservice/jdbc/CallFuncImpl.class
+org/gridgain/myservice/MyThinStatementImpl.class
+org/smart/service/MySmartScenesService$1.class
+org/smart/service/MySmartScenesService$InstanceHolder.class
+org/tools/MyPlusFunc.class
+org/gridgain/myservice/MyPlusFuncImpl.class
+org/smart/service/MySmartScenesService.class
+org/gridgain/myservice/MyConnectionImpl.class
