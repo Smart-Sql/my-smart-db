@@ -99,7 +99,7 @@ public interface IgniteScheduler {
      * @return Scheduled execution future.
      * @throws NullPointerException if {@code job} is {@code null}.
      */
-    public SchedulerFuture<?> scheduleLocal(Runnable job, String ptrn);
+    public SchedulerFuture<?> scheduleLocal(String name, Runnable job, String ptrn);
 
     /**
      * Schedules job for execution using local <b>cron-based</b> scheduling.
@@ -111,5 +111,5 @@ public interface IgniteScheduler {
      * @return Scheduled execution future.
      * @throws NullPointerException if {@code job} is {@code null}.
      */
-    public <R> SchedulerFuture<R> scheduleLocal(Callable<R> job, String ptrn);
+    public <R> SchedulerFuture<R> scheduleLocal(String name, Callable<R> job, String ptrn);
 }

@@ -1,0 +1,229 @@
+/*
+ * Copyright 2019 GridGain Systems, Inc. and Contributors.
+ *
+ * Licensed under the GridGain Community Edition License (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.gridgain.com/products/software/community-edition/gridgain-community-edition-license
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.ignite.internal.processors.query.h2.opt;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
+import org.apache.ignite.IgniteCheckedException;
+import org.apache.ignite.internal.binary.BinaryObjectImpl;
+import org.apache.ignite.internal.processors.cache.CacheObject;
+import org.apache.ignite.internal.processors.cache.CacheObjectValueContext;
+import org.apache.ignite.internal.processors.query.h2.H2Utils;
+import org.gridgain.internal.h2.message.DbException;
+import org.gridgain.internal.h2.util.Bits;
+import org.gridgain.internal.h2.util.JdbcUtils;
+import org.gridgain.internal.h2.util.Utils;
+import org.gridgain.internal.h2.value.CompareMode;
+import org.gridgain.internal.h2.value.TypeInfo;
+import org.gridgain.internal.h2.value.Value;
+import org.gridgain.internal.h2.value.ValueJavaObject;
+
+/**
+ * H2 Value over {@link CacheObject}. Replacement for {@link ValueJavaObject}.
+ */
+public class GridH2ValueCacheObject extends Value {
+    /** */
+    private CacheObject obj;
+
+    /** Object value context. */
+    private CacheObjectValueContext valCtx;
+
+    /** Stub flag, check {@link GridH2ValueCacheObject#useLegacyComparator()} description. */
+    private boolean useLegacyComparator;
+
+    /**
+     * Constructor.
+     *
+     * @param obj Object.
+     * @param valCtx Object value context.
+     */
+    public GridH2ValueCacheObject(CacheObject obj, CacheObjectValueContext valCtx) {
+        assert obj != null;
+
+        if (obj instanceof BinaryObjectImpl) {
+            ((BinaryObjectImpl)obj).detachAllowed(true);
+            obj = ((BinaryObjectImpl)obj).detach();
+        }
+
+        this.obj = obj;
+        this.valCtx = valCtx;
+    }
+
+    /**
+     * @return Cache object.
+     */
+    public CacheObject getCacheObject() {
+        return obj;
+    }
+
+    /**
+     * @return Value context.
+     */
+    public CacheObjectValueContext valueContext() {
+        return valCtx;
+    }
+
+    /** {@inheritDoc} */
+    @Override public String getSQL() {
+        throw new UnsupportedOperationException();
+    }
+
+    /** {@inheritDoc} */
+    @Override public StringBuilder getSQL(StringBuilder sb) {
+        throw new UnsupportedOperationException();
+    }
+
+    /** {@inheritDoc} */
+    @Override public TypeInfo getType() {
+        return TypeInfo.TYPE_JAVA_OBJECT;
+    }
+
+    /** {@inheritDoc} */
+    @Override public int getValueType() {
+        return Value.JAVA_OBJECT;
+    }
+
+    /** {@inheritDoc} */
+    @Override public String getString() {
+        return getObject().toString();
+    }
+
+    /** {@inheritDoc} */
+    @Override public byte[] getBytes() {
+        return Utils.cloneByteArray(getBytesNoCopy());
+    }
+
+    /** {@inheritDoc} */
+    @Override public byte[] getBytesNoCopy() {
+        if (obj.cacheObjectType() == CacheObject.TYPE_REGULAR) {
+            // Result must be the same as `marshaller.marshall(obj.value(coctx, false));`
+            try {
+                return obj.valueBytes(valCtx);
+            }
+            catch (IgniteCheckedException e) {
+                throw DbException.convert(e);
+            }
+        }
+
+        // For user-provided and array types.
+        return JdbcUtils.serialize(obj, H2Utils.getHandler(valCtx.kernalContext()));
+    }
+
+    /** {@inheritDoc} */
+    @Override public Object getObject() {
+        return getObject(false);
+    }
+
+    /**
+     * @param cpy Copy flag.
+     * @return Value.
+     */
+    public Object getObject(boolean cpy) {
+        return obj.isPlatformType() ? obj.value(valCtx, cpy) : obj;
+    }
+
+    /** {@inheritDoc} */
+    @Override public void set(PreparedStatement prep, int parameterIndex) throws SQLException {
+        prep.setObject(parameterIndex, getObject(), Types.JAVA_OBJECT);
+    }
+
+    /** {@inheritDoc} */
+    @SuppressWarnings("unchecked")
+    @Override public int compareTypeSafe(Value v, CompareMode mode) {
+        Object o1 = getObject();
+        Object o2 = v.getObject();
+
+        boolean o1Comparable = o1 instanceof Comparable;
+        boolean o2Comparable = o2 instanceof Comparable;
+
+        if (o1Comparable && o2Comparable &&
+            Utils.haveCommonComparableSuperclass(o1.getClass(), o2.getClass())) {
+            Comparable<Object> c1 = (Comparable<Object>)o1;
+
+            return c1.compareTo(o2);
+        }
+
+        // Group by types.
+        if (o1.getClass() != o2.getClass()) {
+            if (o1Comparable != o2Comparable)
+                return o1Comparable ? -1 : 1;
+
+            return o1.getClass().getName().compareTo(o2.getClass().getName());
+        }
+
+        // Compare hash codes.
+        int h1 = hashCode();
+        int h2 = v.hashCode();
+
+        if (h1 == h2) {
+            if (o1.equals(o2))
+                return 0;
+
+            if (!legacyComparator() && o1 instanceof BinaryObjectImpl)
+                return BinaryObjectImpl.compare(o1, o2);
+
+            return Bits.compareNotNullSigned(getBytesNoCopy(), v.getBytesNoCopy());
+        }
+
+        return h1 > h2 ? 1 : -1;
+    }
+
+    /**
+     * Stub GG-33962, GG-34893 (new comparator) workaround.
+     * Versions < 8.7.40 and < 8.8.11 are used incorrect comparator and a simple comparator change
+     * leads to the tree corruprion. Thus for "old" versions is used appropriate old comparator,
+     * we take into account that later all indexes will be rebuild and only one ver of comparator
+     * will be used.
+     */
+    public void useLegacyComparator() {
+        useLegacyComparator = true;
+    }
+
+    /**
+     * @return {@code true} if legacy comparator is used, {@code false} otherwise.
+     */
+    public boolean legacyComparator() {
+        return useLegacyComparator;
+    }
+
+    /** {@inheritDoc} */
+    @Override public int hashCode() {
+        return getObject().hashCode();
+    }
+
+    /** {@inheritDoc} */
+    @Override public boolean equals(Object other) {
+        if (!(other instanceof Value))
+            return false;
+
+        Value otherVal = (Value)other;
+
+        return otherVal.getType().getValueType() == Value.JAVA_OBJECT
+            && getObject().equals(otherVal.getObject());
+    }
+
+    /** {@inheritDoc} */
+    @Override public Value convertPrecision(long precision, boolean force) {
+        return this;
+    }
+
+    /** {@inheritDoc} */
+    @Override public int getMemory() {
+        return 0;
+    }
+}

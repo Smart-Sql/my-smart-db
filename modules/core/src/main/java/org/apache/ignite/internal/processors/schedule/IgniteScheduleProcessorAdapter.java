@@ -39,7 +39,7 @@ public abstract class IgniteScheduleProcessorAdapter extends GridProcessorAdapte
      *      and n2 is the number of task calls.
      * @return Descriptor of the scheduled execution.
      */
-    public abstract SchedulerFuture<?> schedule(final Runnable c, String pattern);
+    public abstract SchedulerFuture<?> schedule(final String name, final Runnable c, String pattern);
 
     /**
      * @param c Closure to schedule to run as a background cron-based job.
@@ -47,5 +47,5 @@ public abstract class IgniteScheduleProcessorAdapter extends GridProcessorAdapte
      *      and n2 is the number of task calls.
      * @return Descriptor of the scheduled execution.
      */
-    public abstract <R> SchedulerFuture<R> schedule(Callable<R> c, String pattern);
+    public abstract <R> SchedulerFuture<R> schedule(final String name, Callable<R> c, String pattern);
 }

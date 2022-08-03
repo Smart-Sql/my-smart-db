@@ -43,6 +43,10 @@
     <modules>
         <module>modules/core</module>
         <module>modules/schedule</module>
+        <module>modules/indexing</module>
+        <module>modules/h2</module>
+        <module>modules/geospatial</module>
+        <module>modules/spring</module>
         <module>modules/my-super-service</module>
         <module>modules/my-super-service-impl</module>
         <module>modules/my-thin-client</module>

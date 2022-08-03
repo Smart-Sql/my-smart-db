@@ -99,13 +99,13 @@ public class IgniteSchedulerImpl implements IgniteScheduler, Externalizable {
     }
 
     /** {@inheritDoc} */
-    @Override public SchedulerFuture<?> scheduleLocal(@NotNull Runnable job, String ptrn) {
+    @Override public SchedulerFuture<?> scheduleLocal(final String name, @NotNull Runnable job, String ptrn) {
         A.notNull(job, "job");
 
         guard();
 
         try {
-            return ctx.schedule().schedule(job, ptrn);
+            return ctx.schedule().schedule(name, job, ptrn);
         }
         finally {
             unguard();
@@ -113,13 +113,13 @@ public class IgniteSchedulerImpl implements IgniteScheduler, Externalizable {
     }
 
     /** {@inheritDoc} */
-    @Override public <R> SchedulerFuture<R> scheduleLocal(@NotNull Callable<R> job, String ptrn) {
+    @Override public <R> SchedulerFuture<R> scheduleLocal(final String name, @NotNull Callable<R> job, String ptrn) {
         A.notNull(job, "job");
 
         guard();
 
         try {
-            return ctx.schedule().schedule(job, ptrn);
+            return ctx.schedule().schedule(name, job, ptrn);
         }
         finally {
             unguard();

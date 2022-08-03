@@ -100,6 +100,7 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/visor/cache/VisorCacheToggleStatisticsTaskArg.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/managers/systemview/walker/SqlQueryHistoryViewWalker.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/managers/deployment/GridDeploymentMetadata.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/smart/service/MyLogService.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/binary/builder/BinaryAbstractLazyValue.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/binary/BinaryIdentityResolver.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/txdr/TransactionalDrProcessor.java

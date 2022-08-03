@@ -187,6 +187,7 @@
     <httpcore.version>4.4.3</httpcore.version>
     <jboss.rmi.version>1.0.6.Final</jboss.rmi.version>
     <jetty.version>9.4.43.v20210629</jetty.version>
+    <gridgain.version>8.8.20</gridgain.version>
     <aws.encryption.sdk.version>2.4.0</aws.encryption.sdk.version>
     <arguments></arguments>
     <commons.beanutils.bundle.version>1.9.2_1</commons.beanutils.bundle.version>

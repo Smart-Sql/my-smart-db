@@ -47,6 +47,7 @@ org/apache/ignite/internal/util/TimeBag$1.class
 org/apache/ignite/internal/processors/cache/distributed/dht/GridDhtCacheEntry$1.class
 org/apache/ignite/internal/binary/streams/BinaryMemoryAllocator$PooledAllocator$Chunk.class
 org/apache/ignite/internal/visor/cache/VisorCacheRebalanceConfiguration.class
+org/apache/ignite/smart/service/MyLogService.class
 org/apache/ignite/internal/IgniteNeedReconnectException.class
 org/apache/ignite/internal/processors/affinity/GridAffinityMessage.class
 org/apache/ignite/internal/processors/rest/client/message/GridRouterRequest.class
@@ -1810,6 +1811,7 @@ org/apache/ignite/internal/processors/platform/client/cache/ClientCachePutAllReq
 org/apache/ignite/internal/IgniteDiagnosticMessage$TxEntriesInfoClosure.class
 org/apache/ignite/internal/processors/cache/persistence/GridCacheDatabaseSharedManager$6.class
 org/apache/ignite/internal/processors/cache/persistence/metastorage/MetastorageRowStore.class
+org/apache/ignite/smart/service/MyLogService$InstanceHolder.class
 org/apache/ignite/internal/processors/configuration/distributed/DistributedEnumProperty$1.class
 org/apache/ignite/internal/util/lang/GridTuple5$1.class
 org/apache/ignite/cache/store/jdbc/dialect/BasicJdbcDialect.class
@@ -2935,6 +2937,7 @@ org/apache/ignite/internal/processors/cache/binary/MetadataUpdateProposedMessage
 org/apache/ignite/internal/processors/cache/GridCacheAdapter$12.class
 org/apache/ignite/spi/loadbalancing/weightedrandom/WeightedRandomLoadBalancingSpi$1.class
 org/apache/ignite/internal/processors/cache/transactions/IgniteTxLocalAdapter$PostMissClosure.class
+org/apache/ignite/smart/service/MyLogService$1.class
 org/apache/ignite/internal/processors/cache/ExchangeActions.class
 org/apache/ignite/internal/util/GridLogThrottle$LogLevel$3.class
 org/apache/ignite/internal/managers/deployment/protocol/gg/GridProtocolHandler.class

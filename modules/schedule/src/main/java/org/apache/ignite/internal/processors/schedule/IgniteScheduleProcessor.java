@@ -22,6 +22,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.apache.ignite.IgniteCheckedException;
 import org.apache.ignite.internal.GridKernalContext;
 import org.apache.ignite.internal.util.GridConcurrentHashSet;
@@ -38,7 +40,8 @@ public class IgniteScheduleProcessor extends IgniteScheduleProcessorAdapter {
     private Scheduler sched;
 
     /** Schedule futures. */
-    private Set<SchedulerFuture<?>> schedFuts = new GridConcurrentHashSet<>();
+    //private Set<SchedulerFuture<?>> schedFuts = new GridConcurrentHashSet<>();
+    private ConcurrentHashMap<String, SchedulerFuture<?>> schedFuts = new ConcurrentHashMap<String, SchedulerFuture<?>>();
 
     /**
      * @param ctx Kernal context.
@@ -48,11 +51,11 @@ public class IgniteScheduleProcessor extends IgniteScheduleProcessorAdapter {
     }
 
     /** {@inheritDoc} */
-    @Override public SchedulerFuture<?> schedule(final Runnable c, String ptrn) {
+    @Override public SchedulerFuture<?> schedule(final String name, final Runnable c, String ptrn) {
         assert c != null;
         assert ptrn != null;
 
-        ScheduleFutureImpl<Object> fut = new ScheduleFutureImpl<>(sched, ctx, ptrn);
+        ScheduleFutureImpl<Object> fut = new ScheduleFutureImpl<>(name, sched, ctx, ptrn);
 
         fut.schedule(new IgniteCallable<Object>() {
             @Nullable @Override public Object call() {
@@ -66,11 +69,11 @@ public class IgniteScheduleProcessor extends IgniteScheduleProcessorAdapter {
     }
 
     /** {@inheritDoc} */
-    @Override public <R> SchedulerFuture<R> schedule(Callable<R> c, String pattern) {
+    @Override public <R> SchedulerFuture<R> schedule(final String name, Callable<R> c, String pattern) {
         assert c != null;
         assert pattern != null;
 
-        ScheduleFutureImpl<R> fut = new ScheduleFutureImpl<>(sched, ctx, pattern);
+        ScheduleFutureImpl<R> fut = new ScheduleFutureImpl<>(name, sched, ctx, pattern);
 
         fut.schedule(c);
 
@@ -81,19 +84,26 @@ public class IgniteScheduleProcessor extends IgniteScheduleProcessorAdapter {
      *
      * @return Future objects of currently scheduled active(not finished) tasks.
      */
-    public Collection<SchedulerFuture<?>> getScheduledFutures() {
-        return Collections.unmodifiableList(new ArrayList<>(schedFuts));
+//    public Collection<SchedulerFuture<?>> getScheduledFutures() {
+//        return Collections.unmodifiableList(new ArrayList<>(schedFuts));
+//    }
+    public ConcurrentHashMap<String, SchedulerFuture<?>> getScheduledFutures() {
+        return this.schedFuts;
     }
 
     /**
      * Removes future object from the collection of scheduled futures.
      *
-     * @param fut Future object.
+     * @param funName Future object.
      */
-    void onDescheduled(SchedulerFuture<?> fut) {
-        assert fut != null;
+//    void onDescheduled(SchedulerFuture<?> fut) {
+//        assert fut != null;
+//
+//        schedFuts.remove(fut);
+//    }
 
-        schedFuts.remove(fut);
+    public void onDescheduled(final String funName) {
+        schedFuts.remove(funName);
     }
 
     /**
@@ -101,17 +111,24 @@ public class IgniteScheduleProcessor extends IgniteScheduleProcessorAdapter {
      *
      * @param fut Future object.
      */
-    void onScheduled(SchedulerFuture<?> fut) {
+//    void onScheduled(SchedulerFuture<?> fut) {
+//        assert fut != null;
+//
+//        schedFuts.add(fut);
+//    }
+    public void onScheduled(final String funName, final SchedulerFuture<?> fut) {
         assert fut != null;
-
-        schedFuts.add(fut);
+        schedFuts.put(funName, fut);
     }
 
     /** {@inheritDoc} */
     @Override public void start() throws IgniteCheckedException {
         sched = new Scheduler();
 
-        sched.start();
+        if (sched.isStarted() == false)
+        {
+            sched.start();
+        }
     }
 
     /** {@inheritDoc} */

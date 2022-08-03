@@ -7,6 +7,8 @@ ignite-schedule
 
 
 From: 'an unknown organization'
+  - my-super-service (http://www.example.com) cn.mysuper:my-super-service:jar:1.0-SNAPSHOT
+
   - FindBugs-jsr305 (http://findbugs.sourceforge.net/) com.google.code.findbugs:jsr305:jar:3.0.2
     License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
   - Gson (https://github.com/google/gson/gson) com.google.code.gson:gson:jar:2.8.2
