@@ -33,6 +33,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+
+import cn.myservice.MyInitFuncService;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCheckedException;
 import org.apache.ignite.IgniteException;
@@ -1627,6 +1629,8 @@ public class GridClusterStateProcessor extends GridProcessorAdapter implements I
                     distributedBaselineConfiguration.onActivate();
 
                     ctx.txDr().onActivate(ctx);
+
+                    MyInitFuncService.getInstance().getInitFunc().initFunc();
 
                     if (log.isInfoEnabled())
                         log.info("Successfully performed final activation steps [nodeId="

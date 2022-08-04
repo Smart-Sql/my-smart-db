@@ -424,6 +424,11 @@ class ScheduleFutureImpl<R> implements SchedulerFuture<R> {
         return pat;
     }
 
+    @Override
+    public Callable<R> getTask() {
+        return task;
+    }
+
     /** {@inheritDoc} */
     @Override public String id() {
         return id;
@@ -886,6 +891,11 @@ class ScheduleFutureImpl<R> implements SchedulerFuture<R> {
         /** {@inheritDoc} */
         @Nullable @Override public R get(long timeout, TimeUnit unit) {
             return ref.get(timeout, unit);
+        }
+
+        @Override
+        public Callable<R> getTask() {
+            return ref.getTask();
         }
 
         /** {@inheritDoc} */

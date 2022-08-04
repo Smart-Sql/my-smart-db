@@ -27,8 +27,8 @@ import org.apache.ignite.lang.IgniteFutureTimeoutException;
 
 /**
  * Future for cron-based scheduled execution. This future is returned
- * when calling {@link IgniteScheduler#scheduleLocal(Callable, String)} or
- * {@link IgniteScheduler#scheduleLocal(Runnable, String)} methods.
+ * when calling {@link IgniteScheduler#scheduleLocal(String, Callable, String)} or
+ * {@link IgniteScheduler#scheduleLocal(String, Runnable, String)} methods.
  */
 public interface SchedulerFuture<R> extends IgniteFuture<R> {
     /**
@@ -155,4 +155,9 @@ public interface SchedulerFuture<R> extends IgniteFuture<R> {
      * @throws IgniteException {@inheritDoc}
      */
     @Override public R get(long timeout, TimeUnit unit);
+
+    /**
+     * 获取任务 task
+     * */
+    public <R> Callable<R> getTask();
 }
