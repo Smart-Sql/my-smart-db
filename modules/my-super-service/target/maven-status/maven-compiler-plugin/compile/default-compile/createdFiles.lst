@@ -7,7 +7,6 @@ cn/mysuper/service/IMySqlAst.class
 cn/myservice/MyLoadScriptService$InstanceHolder.class
 cn/mysuper/jdbc/service/ICallFunc.class
 cn/smart/service/IMyLoadScript.class
-cn/smart/service/IMyLog.class
 cn/mysuper/service/IMyPlusFunc.class
 cn/myservice/MyPlusFuncService$1.class
 cn/mysuper/service/IInitFunc.class
@@ -17,6 +16,7 @@ cn/myservice/jdbc/CallFuncService$InstanceHolder.class
 cn/myservice/MyLoadScriptService.class
 cn/myservice/jdbc/CallFuncService.class
 cn/myservice/MyThinStatementService$InstanceHolder.class
+cn/smart/service/IMyLogTransaction.class
 cn/mysuper/model/MyUrlToken.class
 cn/myservice/MyInitFuncService$InstanceHolder.class
 cn/myservice/MyLoadScriptService$1.class

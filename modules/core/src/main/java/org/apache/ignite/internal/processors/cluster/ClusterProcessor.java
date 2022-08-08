@@ -603,6 +603,7 @@ public class ClusterProcessor extends GridProcessorAdapter implements Distribute
 
     /** {@inheritDoc} */
     @Override public void onKernalStart(boolean active) throws IgniteCheckedException {
+        /*
         if (notifyEnabled.get()) {
             try {
                 verChecker = new GridUpdateNotifier(ctx.igniteInstanceName(),
@@ -625,6 +626,7 @@ public class ClusterProcessor extends GridProcessorAdapter implements Distribute
                     log.debug("Failed to create GridUpdateNotifier: " + e);
             }
         }
+         */
 
         if (sndMetrics) {
             metricsProvider = ctx.discovery().createMetricsProvider();
