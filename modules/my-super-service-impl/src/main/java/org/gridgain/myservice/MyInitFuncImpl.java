@@ -3,14 +3,18 @@ package org.gridgain.myservice;
 import cn.mysuper.service.IInitFunc;
 import org.apache.ignite.*;
 import org.apache.ignite.cache.CacheMode;
+import org.apache.ignite.cache.query.SqlFieldsQuery;
 import org.apache.ignite.configuration.CacheConfiguration;
 import org.apache.ignite.internal.GridKernalContext;
 import org.apache.ignite.internal.IgniteEx;
 import org.apache.ignite.internal.processors.query.h2.ConnectionManager;
 import org.apache.ignite.internal.processors.query.h2.IgniteH2Indexing;
+import org.gridgain.nosql.MyNoSqlUtil;
 import org.gridgain.plus.init.PlusInit;
 import org.tools.MyInitCache;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class MyInitFuncImpl implements IInitFunc {
@@ -84,6 +88,9 @@ public class MyInitFuncImpl implements IInitFunc {
             ignite.getOrCreateCache(new CacheConfiguration<>("public_meta").setSqlSchema("PUBLIC"));
             ignite.getOrCreateCache(new CacheConfiguration<>("my_meta_table").setSqlSchema("MY_META"));
             initSchemaFunc(ignite, "MY_META");
+
+            //IgniteCache<MyCachePK, MyCaches> my_caches = ignite.cache("my_caches");
+            MyNoSqlUtil.initCaches(ignite);
 
         } catch (IgniteCheckedException var5) {
             var5.printStackTrace();

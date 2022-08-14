@@ -128,6 +128,9 @@ public class IgniteScheduleProcessor extends IgniteScheduleProcessorAdapter {
         if (sched.isStarted() == false)
         {
             sched.start();
+            X.println(">>>");
+            X.println("定时任务启动！");
+            X.println(">>>");
         }
     }
 
