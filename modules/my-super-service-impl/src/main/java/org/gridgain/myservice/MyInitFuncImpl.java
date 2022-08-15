@@ -10,6 +10,7 @@ import org.apache.ignite.internal.IgniteEx;
 import org.apache.ignite.internal.processors.query.h2.ConnectionManager;
 import org.apache.ignite.internal.processors.query.h2.IgniteH2Indexing;
 import org.gridgain.nosql.MyNoSqlUtil;
+import org.gridgain.plus.SmartFunc;
 import org.gridgain.plus.init.PlusInit;
 import org.tools.MyInitCache;
 
@@ -91,7 +92,8 @@ public class MyInitFuncImpl implements IInitFunc {
 
             //IgniteCache<MyCachePK, MyCaches> my_caches = ignite.cache("my_caches");
             MyNoSqlUtil.initCaches(ignite);
-
+            // 加载定时任务
+            SmartFunc.initJob(ignite);
         } catch (IgniteCheckedException var5) {
             var5.printStackTrace();
         }
