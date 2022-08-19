@@ -40,6 +40,10 @@ public class MyInitFuncImpl implements IInitFunc {
             connMgr.executeStatement("PUBLIC", clause);
             System.out.println("自定义方法：auto_id 初始化成功！");
 
+            clause = "CREATE ALIAS IF NOT EXISTS superSql FOR \"org.tools.MyPlusFunc.superSql\"";
+            connMgr.executeStatement("PUBLIC", clause);
+            System.out.println("自定义方法：superSql 初始化成功！");
+
             clause = "CREATE ALIAS IF NOT EXISTS my_fun FOR \"org.tools.MyPlusFunc.myFun\"";
             connMgr.executeStatement("PUBLIC", clause);
             System.out.println("自定义方法：my_fun 初始化成功！");
@@ -72,9 +76,6 @@ public class MyInitFuncImpl implements IInitFunc {
             connMgr.executeStatement("PUBLIC", clause);
             System.out.println("自定义方法：hasConnPermission 初始化成功！");
 
-            clause = "CREATE ALIAS IF NOT EXISTS superSql FOR \"org.tools.MyPlusFunc.superSql\"";
-            connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：superSql 初始化成功！");
 
 //            clause = "CREATE ALIAS IF NOT EXISTS my_line_binary FOR \"org.tools.MyPlusFunc.my_line_binary\"";
 //            connMgr.executeStatement("PUBLIC", clause);
@@ -94,6 +95,7 @@ public class MyInitFuncImpl implements IInitFunc {
             MyNoSqlUtil.initCaches(ignite);
             // 加载定时任务
             SmartFunc.initJob(ignite);
+            System.out.println("加载完成！");
         } catch (IgniteCheckedException var5) {
             var5.printStackTrace();
         }
