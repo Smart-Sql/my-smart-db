@@ -78,7 +78,7 @@ public class MyPlusFunc implements Serializable {
         return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeLink(methodName, group_id, ps));
     }
 
-    public static String superSql(byte[] userToken, byte[] sql) {
+    public static String smartSql(byte[] userToken, byte[] sql) {
         //Object m_obj = MyCacheExUtil.restore(sql);
         //System.out.println(m_obj);
 //        Object m_obj = MyCacheExUtil.restore(sql);

@@ -10,12 +10,13 @@
         <module name="ignite-schedule" />
         <module name="my-super-service" />
         <module name="ignite-core" />
+        <module name="my-back-up" />
         <module name="ignite-indexing" />
-        <module name="ignite-spring" />
         <module name="ignite-geospatial" />
-        <module name="my-super-service-impl" />
+        <module name="ignite-spring" />
         <module name="my-thin-client-service" />
         <module name="my-thin-client" />
+        <module name="my-super-service-impl" />
         <module name="ignite-h2" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
       <module name="ignite-indexing" target="11" />
       <module name="ignite-schedule" target="11" />
       <module name="ignite-spring" target="11" />
+      <module name="my-back-up" target="1.8" />
       <module name="my-super-service" target="1.8" />
       <module name="my-super-service-impl" target="1.8" />
       <module name="my-thin-client" target="1.8" />

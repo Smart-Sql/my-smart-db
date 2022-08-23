@@ -40,9 +40,9 @@ public class MyInitFuncImpl implements IInitFunc {
             connMgr.executeStatement("PUBLIC", clause);
             System.out.println("自定义方法：auto_id 初始化成功！");
 
-            clause = "CREATE ALIAS IF NOT EXISTS superSql FOR \"org.tools.MyPlusFunc.superSql\"";
+            clause = "CREATE ALIAS IF NOT EXISTS smartSql FOR \"org.tools.MyPlusFunc.smartSql\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：superSql 初始化成功！");
+            System.out.println("自定义方法：smartSql 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_fun FOR \"org.tools.MyPlusFunc.myFun\"";
             connMgr.executeStatement("PUBLIC", clause);
@@ -148,9 +148,9 @@ public class MyInitFuncImpl implements IInitFunc {
             connMgr.executeStatement(schemaName, clause);
             System.out.println(schemaName + ": 自定义方法：hasConnPermission 初始化成功！");
 
-            clause = "CREATE ALIAS IF NOT EXISTS superSql FOR \"org.tools.MyPlusFunc.superSql\"";
+            clause = "CREATE ALIAS IF NOT EXISTS smartSql FOR \"org.tools.MyPlusFunc.smartSql\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：superSql 初始化成功！");
+            System.out.println(schemaName + ": 自定义方法：smartSql 初始化成功！");
 
 //            clause = "CREATE ALIAS IF NOT EXISTS my_line_binary FOR \"org.tools.MyPlusFunc.my_line_binary\"";
 //            connMgr.executeStatement(schemaName, clause);
@@ -198,9 +198,9 @@ public class MyInitFuncImpl implements IInitFunc {
             clause = "DROP ALIAS IF EXISTS hasConnPermission";
             connMgr.executeStatement(schemaName, clause);
             System.out.println(schemaName + ": 自定义方法：hasConnPermission 删除成功！");
-            clause = "DROP ALIAS IF EXISTS superSql";
+            clause = "DROP ALIAS IF EXISTS smartSql";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：superSql 删除成功！");
+            System.out.println(schemaName + ": 自定义方法：smartSql 删除成功！");
 //            clause = "DROP TABLE IF EXISTS my_line_binary FOR \"org.tools.MyPlusFunc.my_line_binary\"";
 //            connMgr.executeStatement(schemaName, clause);
 //            System.out.println("自定义方法：my_line_binary 初始化成功！（这个方法是用作测试的）");

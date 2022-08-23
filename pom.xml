@@ -49,6 +49,7 @@
         <module>modules/spring</module>
         <module>modules/my-super-service</module>
         <module>modules/my-super-service-impl</module>
+        <module>modules/my-back-up</module>
         <module>modules/my-thin-client</module>
         <module>modules/my-thin-client-service</module>
     </modules>

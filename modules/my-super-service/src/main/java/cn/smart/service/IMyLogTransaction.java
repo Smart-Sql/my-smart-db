@@ -1,5 +1,7 @@
 package cn.smart.service;
 
+import java.util.List;
+
 /**
  * 用于两地三中心，这种高可用场景。
  * 用户自己实现高可用的程序。这个只是一个接口而已
@@ -8,11 +10,12 @@ package cn.smart.service;
  * */
 public interface IMyLogTransaction {
 
-    public void begin();
+    public void createSession(final String tranSession);
 
-    public Boolean saveTo(final byte[] data);
+    public void saveTo(final String tranSession, final Object data);
 
-    public void commit();
+    public void commit(final String tranSession);
 
-    public void rollback();
+    public void rollback(final String tranSession);
+
 }

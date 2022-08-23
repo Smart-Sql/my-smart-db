@@ -171,8 +171,8 @@ public class JdbcThinStatement implements Statement {
             List<List<String>> myLst = reList(mySqlAst.getSmartSegment(sql));
             // 如果 mylst 中包括：loadFromNative 函数，则先执行这个函数来提交给服务器
 
-            //String mysql0 = String.format("select superSql(%s, ?)", this.conn.getGroup_id());
-            String mysql0 = "select superSql(?,?)";
+            //String mysql0 = String.format("select smartSql(%s, ?)", this.conn.getGroup_id());
+            String mysql0 = "select smartSql(?,?)";
             //String mysql0 = "select my_line_inary(?)";
             List<Object> lst = new ArrayList<Object>();
             lst.add(MyLineToBinary.objToBytes(this.conn.getUserToken()));

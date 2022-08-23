@@ -25,7 +25,7 @@
     <orderEntry type="library" name="Maven: org.clojure:tools.reader:1.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.clojure:core.specs.alpha:0.2.44" level="project" />
     <orderEntry type="library" name="Maven: org.clojure:spec.alpha:0.2.176" level="project" />
-    <orderEntry type="library" name="Maven: org.gridgain:ignite-core:8.7.24" level="project" />
+    <orderEntry type="module" module-name="ignite-core" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:25.1-jre" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:2.0.0" level="project" />
@@ -39,24 +39,28 @@
     <orderEntry type="library" name="Maven: javax.cache:cache-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:16.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.gridgain:ignite-shmem:8.7.3" level="project" />
-    <orderEntry type="library" name="Maven: org.quartz-scheduler:quartz:2.3.2" level="project" />
-    <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.4" level="project" />
-    <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.15" level="project" />
-    <orderEntry type="library" name="Maven: com.zaxxer:HikariCP-java7:2.4.13" level="project" />
-    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
-    <orderEntry type="library" name="Maven: org.gridgain:ignite-indexing:8.7.24" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.12" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:7.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers-common:7.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queryparser:7.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queries:7.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-sandbox:7.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.gridgain:ignite-spring:8.7.24" level="project" />
-    <orderEntry type="library" name="Maven: org.gridgain:ignite-h2:8.7.24" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.sun:tools:11.0.6">
+        <CLASSES>
+          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="ignite-indexing" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:8.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers-common:8.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queryparser:8.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queries:8.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-sandbox:8.11.1" level="project" />
+    <orderEntry type="module" module-name="ignite-spring" />
+    <orderEntry type="module" module-name="ignite-h2" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.4" level="project" />
     <orderEntry type="library" name="Maven: org.locationtech.jts:jts-core:1.15.0" level="project" />
-    <orderEntry type="library" name="Maven: org.gridgain:ignite-schedule:8.7.24" level="project" />
+    <orderEntry type="module" module-name="ignite-schedule" />
     <orderEntry type="library" name="Maven: it.sauronsoftware.cron4j:cron4j:2.2.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.25.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.25.RELEASE" level="project" />
