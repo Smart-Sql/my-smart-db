@@ -56,6 +56,10 @@ public class MyInitFuncImpl implements IInitFunc {
             connMgr.executeStatement("PUBLIC", clause);
             System.out.println("自定义方法：my_invoke_link 初始化成功！");
 
+            clause = "CREATE ALIAS IF NOT EXISTS my_invoke_all FOR \"org.tools.MyPlusFunc.myInvokeAllFuncScenes\"";
+            connMgr.executeStatement("PUBLIC", clause);
+            System.out.println("自定义方法：my_invoke_all 初始化成功！");
+
 //            clause = "CREATE ALIAS IF NOT EXISTS nth FOR \"org.tools.MyPlusFunc.nth\"";
 //            connMgr.executeStatement("PUBLIC", clause);
 //            System.out.println("自定义方法：nth 初始化成功！");
@@ -127,6 +131,10 @@ public class MyInitFuncImpl implements IInitFunc {
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke_link FOR \"org.tools.MyPlusFunc.myInvokeLink\"";
             connMgr.executeStatement(schemaName, clause);
             System.out.println(schemaName + "：my_invoke_link 初始化成功！");
+
+            clause = "CREATE ALIAS IF NOT EXISTS my_invoke_all FOR \"org.tools.MyPlusFunc.myInvokeAllFuncScenes\"";
+            connMgr.executeStatement(schemaName, clause);
+            System.out.println(schemaName + "：my_invoke_all 初始化成功！");
 
 //            clause = "CREATE ALIAS IF NOT EXISTS nth FOR \"org.tools.MyPlusFunc.nth\"";
 //            connMgr.executeStatement(schemaName, clause);

@@ -30,6 +30,11 @@ public interface IMyPlusFunc {
      * */
     public Object myInvokeLink(final String methodName, final String group_id, final String... ps);
 
+    /**
+     * 场景调用
+     * */
+    public Object myInvokeAllFuncScenes(final String methodName, final String group_id, final String... ps);
+
     public String superSql(final byte[] var1, final byte[] var2);
     //public String superSql(final String userToken, final String sql);
 }

@@ -19,7 +19,7 @@ public class MyPlusFunc implements Serializable {
     /**
      * 获取 table 的自增长
      * */
-    public static Long auto_id(final String tableName) {
+    public static Object auto_id(final String tableName) {
         return Ignition.ignite().atomicSequence(tableName, 0, true).incrementAndGet();
     }
 
@@ -76,6 +76,14 @@ public class MyPlusFunc implements Serializable {
     public static String myInvokeLink(final String methodName, final String group_id, final String... ps)
     {
         return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeLink(methodName, group_id, ps));
+    }
+
+    /**
+     * 联接函数的调用
+     * */
+    public static String myInvokeAllFuncScenes(final String methodName, final String group_id, final String... ps)
+    {
+        return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeAllFuncScenes(methodName, group_id, ps));
     }
 
     public static String smartSql(byte[] userToken, byte[] sql) {

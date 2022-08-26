@@ -10,6 +10,7 @@ import org.gridgain.dml.util.MyCacheExUtil;
 import org.gridgain.plus.dml.MySmartScenes;
 import org.gridgain.plus.dml.MySmartSql;
 import org.gridgain.plus.sql.MySuperSql;
+import org.gridgain.plus.sql.jdbc.SmartJdbcFunc;
 import org.smart.service.MySmartScenesService;
 import org.tools.MyConvertUtil;
 import org.tools.MyGson;
@@ -98,6 +99,17 @@ public class MyPlusFuncImpl implements IMyPlusFunc {
             lst.add(m);
         }
         Object rs = mySmartScenes.invokeScenesLink(Ignition.ignite(), MyGson.lineToObj(group_id), methodName, lst);
+        return MyConvertUtil.ConvertToString(rs);
+    }
+
+    @Override
+    public Object myInvokeAllFuncScenes(String methodName, String group_id, String... ps) {
+        List<String> lst = new ArrayList<>();
+        for (String m : ps)
+        {
+            lst.add(m);
+        }
+        Object rs = SmartJdbcFunc.invokeAllFuncScenes(Ignition.ignite(), MyGson.lineToObj(group_id), methodName, lst);
         return MyConvertUtil.ConvertToString(rs);
     }
 
