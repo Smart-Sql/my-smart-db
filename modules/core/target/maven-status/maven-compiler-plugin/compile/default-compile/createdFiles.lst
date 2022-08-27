@@ -968,6 +968,7 @@ org/apache/ignite/internal/processors/closure/GridClosureProcessor.class
 org/apache/ignite/spi/communication/tcp/internal/TcpCommunicationConnectionCheckFuture$MultipleAddressesConnectFuture.class
 org/apache/ignite/internal/util/lang/GridIteratorAdapter.class
 org/apache/ignite/internal/processors/cache/persistence/tree/io/CompactablePageIO.class
+org/apache/ignite/smart/plugins/MyPluginNodeValidation.class
 org/apache/ignite/internal/processors/platform/client/cache/ClientCacheScanQueryRequest.class
 org/apache/ignite/cache/store/jdbc/CacheAbstractJdbcStore$LoadWorker.class
 org/apache/ignite/internal/util/nio/GridNioAsyncNotifyFilter.class
@@ -2773,6 +2774,7 @@ org/apache/ignite/internal/processors/cache/transactions/IgniteTxManager$TxThrea
 org/apache/ignite/internal/util/lang/GridTuple4$1.class
 org/apache/ignite/cache/store/jdbc/CacheAbstractJdbcStore$2.class
 org/apache/ignite/internal/processors/query/QueryHistoryTracker.class
+org/apache/ignite/smart/plugins/MyPluginNodeValidationProvider.class
 org/apache/ignite/IgniteJdbcDriver.class
 org/apache/ignite/internal/util/typedef/internal/GPR.class
 org/apache/ignite/internal/visor/misc/VisorLatestVersionTask$1.class
@@ -3177,6 +3179,7 @@ org/apache/ignite/internal/processors/cache/persistence/evict/RandomLruPageEvict
 org/apache/ignite/internal/processors/authentication/UserManagementOperation$OperationType.class
 org/apache/ignite/internal/processors/cache/persistence/wal/scanner/ScannerHandlers.class
 org/apache/ignite/internal/direct/stream/v1/DirectByteBufferStreamImplV1$4.class
+org/apache/ignite/smart/plugins/MyNodeValidationPluginConfiguration.class
 org/apache/ignite/IgniteServices.class
 org/apache/ignite/internal/processors/closure/AffinityTask.class
 org/apache/ignite/internal/visor/query/VisorQueryUtils$1.class
@@ -5853,6 +5856,7 @@ org/apache/ignite/internal/processors/continuous/GridContinuousProcessor$Routine
 org/apache/ignite/internal/processors/task/GridTaskProcessor$JobMessageListener.class
 org/apache/ignite/internal/processors/odbc/odbc/OdbcQueryGetResultsetMetaRequest.class
 org/apache/ignite/internal/visor/tx/VisorTxInfo.class
+org/apache/ignite/smart/plugins/MyDiscoveryData.class
 org/apache/ignite/internal/processors/cache/GridCacheAdapter$UpdateTimeStatClosure.class
 org/apache/ignite/internal/processors/cache/mvcc/MvccProcessorImpl$VacuumWorker.class
 org/apache/ignite/internal/processors/cache/mvcc/MvccProcessorImpl$ActiveQueries.class

@@ -1040,6 +1040,7 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/platform/PlatformLock.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/cache/persistence/checkpoint/CheckpointPagesWriterFactory.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/visor/tx/TxVerboseInfo.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/smart/plugins/MyDiscoveryData.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/cache/distributed/dht/GridDhtTxFinishFuture.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/datastreamer/DataStreamerImpl.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/managers/systemview/walker/CacheViewWalker.java
@@ -2335,6 +2336,7 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/cache/distributed/dht/preloader/IgniteDhtDemandedPartitionsMap.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/binary/streams/BinaryOffheapInputStream.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/continuous/ContinuousRoutineInfo.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/smart/plugins/MyPluginNodeValidation.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/cache/query/continuous/CacheContinuousQueryAcknowledgeBuffer.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/spi/communication/tcp/internal/TcpInverseConnectionResponseMessage.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/rest/handlers/redis/GridRedisCommandHandler.java
@@ -3460,6 +3462,7 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/util/GridSetWrapper.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/marshaller/package-info.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/cache/persistence/file/FileUploader.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/smart/plugins/MyNodeValidationPluginConfiguration.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/util/nio/GridNioServer.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/compute/gridify/GridifySetToValue.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/platform/client/cache/ClientCacheGetRequest.java
@@ -3558,6 +3561,7 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/GridInternalWrapper.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/odbc/jdbc/JdbcMetaTablesResult.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/platform/websession/PlatformDotNetSessionSetAndUnlockProcessor.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/smart/plugins/MyPluginNodeValidationProvider.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/platform/client/cache/ClientCachePutAllRequest.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/bulkload/pipeline/LineSplitterBlock.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/core/src/main/java/org/apache/ignite/internal/processors/port/GridPortListener.java
