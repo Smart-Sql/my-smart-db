@@ -58,33 +58,51 @@ public class MyPlusFunc implements Serializable {
      * 1、必须有一个默认构造函数
      * 2、方法名不能重载
      * */
-    public static String myFun(final String methodName, final String... ps) {
-        return MyConvertUtil.ConvertToString(myPlusFunc.myFun(methodName, ps));
+    public static Object myFun(final String methodName, final Object... ps) {
+        return myPlusFunc.myFun(methodName, ps);
     }
+//     public static Object myFun(final String methodName, final String... ps) {
+//         return myPlusFunc.myFun(methodName, ps);
+//     }
+//    public static String myFun(final String methodName, final String... ps) {
+//        return MyConvertUtil.ConvertToString(myPlusFunc.myFun(methodName, ps));
+//    }
 
     /**
      * 场景调用
      * */
-    public static String myInvoke(final String methodName, final String group_id, final String... ps)
+    public static Object myInvoke(final String methodName, final String group_id, final Object... ps)
     {
-        return MyConvertUtil.ConvertToString(myPlusFunc.myInvoke(methodName, group_id, ps));
+        return myPlusFunc.myInvoke(methodName, group_id, ps);
     }
+//    public static String myInvoke(final String methodName, final String group_id, final String... ps)
+//    {
+//        return MyConvertUtil.ConvertToString(myPlusFunc.myInvoke(methodName, group_id, ps));
+//    }
 
     /**
      * 联接函数的调用
      * */
-    public static String myInvokeLink(final String methodName, final String group_id, final String... ps)
+    public static Object myInvokeLink(final String methodName, final String group_id, final Object... ps)
     {
-        return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeLink(methodName, group_id, ps));
+        return myPlusFunc.myInvokeLink(methodName, group_id, ps);
     }
+//    public static String myInvokeLink(final String methodName, final String group_id, final String... ps)
+//    {
+//        return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeLink(methodName, group_id, ps));
+//    }
 
     /**
      * 联接函数的调用
      * */
-    public static String myInvokeAllFuncScenes(final String methodName, final String group_id, final String... ps)
+    public static Object myInvokeAllFuncScenes(final String methodName, final String group_id, final Object... ps)
     {
-        return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeAllFuncScenes(methodName, group_id, ps));
+        return myPlusFunc.myInvokeAllFuncScenes(methodName, group_id, ps);
     }
+//    public static String myInvokeAllFuncScenes(final String methodName, final String group_id, final String... ps)
+//    {
+//        return MyConvertUtil.ConvertToString(myPlusFunc.myInvokeAllFuncScenes(methodName, group_id, ps));
+//    }
 
     public static String smartSql(byte[] userToken, byte[] sql) {
         //Object m_obj = MyCacheExUtil.restore(sql);

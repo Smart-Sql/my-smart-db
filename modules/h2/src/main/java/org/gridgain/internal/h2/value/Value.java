@@ -1275,6 +1275,7 @@ public abstract class Value extends VersionedValue {
             throw getDataConversionError(JAVA_OBJECT);
         }
         return ValueJavaObject.getNoCopy(null, StringUtils.convertHexToBytes(getString().trim()), getDataHandler());
+        //return null;
     }
 
     private ValueEnum convertToEnumInternal(ExtTypeInfoEnum extTypeInfo) {

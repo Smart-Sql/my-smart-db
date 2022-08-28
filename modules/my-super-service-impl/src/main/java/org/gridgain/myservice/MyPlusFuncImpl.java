@@ -6,13 +6,10 @@ import java.util.List;
 
 import org.apache.ignite.Ignition;
 import org.apache.ignite.scheduler.SchedulerFuture;
-import org.gridgain.dml.util.MyCacheExUtil;
 import org.gridgain.plus.dml.MySmartScenes;
-import org.gridgain.plus.dml.MySmartSql;
 import org.gridgain.plus.sql.MySuperSql;
 import org.gridgain.plus.sql.jdbc.SmartJdbcFunc;
 import org.smart.service.MySmartScenesService;
-import org.tools.MyConvertUtil;
 import org.tools.MyGson;
 import org.tools.MyPlusUtil;
 
@@ -41,50 +38,20 @@ public class MyPlusFuncImpl implements IMyPlusFunc {
         return sb.toString();
     }
 
-    @Override
-    public Object myFun(String methodName, String... ps) {
-        return MyPlusUtil.invokeFunc(Ignition.ignite(), methodName, ps);
-    }
-
 //    @Override
-//    public Object myFun(String methodName, Object... ps) {
-//        Ignite ignite = Ignition.ignite();
-//        MyFunc myFunc = (MyFunc)ignite.cache("my_func").get(methodName);
-//
-//        try {
-//            Class<?> cls = Class.forName(myFunc.getCls_name());
-//            Constructor constructor = cls.getConstructor();
-//            Object myobj = constructor.newInstance();
-//            Method[] methods = myobj.getClass().getMethods();
-//            Method[] var9 = methods;
-//            int var10 = methods.length;
-//
-//            for(int var11 = 0; var11 < var10; ++var11) {
-//                Method method = var9[var11];
-//                if (method.getName().equals(myFunc.getJava_method_name())) {
-//                    Object rs = method.invoke(myobj, ps);
-//                    return rs;
-//                }
-//            }
-//        } catch (ClassNotFoundException var14) {
-//            var14.printStackTrace();
-//        } catch (InstantiationException var15) {
-//            var15.printStackTrace();
-//        } catch (InvocationTargetException var16) {
-//            var16.printStackTrace();
-//        } catch (NoSuchMethodException var17) {
-//            var17.printStackTrace();
-//        } catch (IllegalAccessException var18) {
-//            var18.printStackTrace();
-//        }
-//
-//        return null;
+//    public Object myFun(String methodName, String... ps) {
+//        return MyPlusUtil.invokeFunc(Ignition.ignite(), methodName, ps);
 //    }
 
     @Override
-    public Object myInvoke(String methodName, String group_id, String... ps) {
-        List<String> lst = new ArrayList<>();
-        for (String m : ps)
+    public Object myFun(String methodName, Object... ps) {
+        return MyPlusUtil.invokeFuncObj(Ignition.ignite(), methodName, ps);
+    }
+
+    @Override
+    public Object myInvoke(String methodName, String group_id, Object... ps) {
+        List<Object> lst = new ArrayList<>();
+        for (Object m : ps)
         {
             lst.add(m);
         }
@@ -92,25 +59,25 @@ public class MyPlusFuncImpl implements IMyPlusFunc {
     }
 
     @Override
-    public Object myInvokeLink(String methodName, String group_id, String... ps) {
-        List<String> lst = new ArrayList<>();
-        for (String m : ps)
+    public Object myInvokeLink(String methodName, String group_id, Object... ps) {
+        List<Object> lst = new ArrayList<>();
+        for (Object m : ps)
         {
             lst.add(m);
         }
         Object rs = mySmartScenes.invokeScenesLink(Ignition.ignite(), MyGson.lineToObj(group_id), methodName, lst);
-        return MyConvertUtil.ConvertToString(rs);
+        return rs;
     }
 
     @Override
-    public Object myInvokeAllFuncScenes(String methodName, String group_id, String... ps) {
-        List<String> lst = new ArrayList<>();
-        for (String m : ps)
+    public Object myInvokeAllFuncScenes(String methodName, String group_id, Object... ps) {
+        List<Object> lst = new ArrayList<>();
+        for (Object m : ps)
         {
             lst.add(m);
         }
         Object rs = SmartJdbcFunc.invokeAllFuncScenes(Ignition.ignite(), MyGson.lineToObj(group_id), methodName, lst);
-        return MyConvertUtil.ConvertToString(rs);
+        return rs;
     }
 
 //    @Override

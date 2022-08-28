@@ -1,11 +1,11 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/jdbc/service/ICallFunc.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IInitFunc.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/smart/service/IMyLogTrans.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/myservice/MyConnectionService.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IMyConnection.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IMySqlAst.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/myservice/MyInitFuncService.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/smart/service/IMyLoadCron.java
-/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/smart/service/IMyLogTransaction.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IThinStatement.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/org/tools/MyLineToBinary.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/model/MyUrlToken.java

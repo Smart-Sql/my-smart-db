@@ -419,7 +419,15 @@ public class FunctionAlias extends SchemaObjectBase {
                     }
                     o = objArray;
                 } else {
-                    v = v.convertTo(type, session.getDatabase().getMode());
+                    try {
+                        if (type != Value.JAVA_OBJECT) {
+                            v = v.convertTo(type, session.getDatabase().getMode());
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
                     o = v.getObject();
                 }
                 if (o == null) {

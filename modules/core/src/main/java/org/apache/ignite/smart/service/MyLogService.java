@@ -1,13 +1,13 @@
 package org.apache.ignite.smart.service;
 
 
-import cn.smart.service.IMyLogTransaction;
+import cn.smart.service.IMyLogTrans;
 import com.google.common.base.Strings;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.Ignition;
 
 public class MyLogService {
-    private IMyLogTransaction myLog;
+    private IMyLogTrans myLog;
 
     private static class InstanceHolder {
         public static MyLogService instance;
@@ -40,11 +40,11 @@ public class MyLogService {
         String myLogCls = ignite.configuration().getMyLogCls();
         if (!Strings.isNullOrEmpty(myLogCls)) {
             Class<?> cls = Class.forName(myLogCls);
-            myLog = (IMyLogTransaction) cls.newInstance();
+            myLog = (IMyLogTrans) cls.newInstance();
         }
     }
 
-    public IMyLogTransaction getMyLog() {
+    public IMyLogTrans getMyLog() {
         return myLog;
     }
 }
