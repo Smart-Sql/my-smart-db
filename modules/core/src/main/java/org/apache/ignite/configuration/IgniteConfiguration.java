@@ -626,38 +626,16 @@ public class IgniteConfiguration {
     /** Shutdown policy for cluster. */
     public ShutdownPolicy shutdown = DFLT_SHUTDOWN_POLICY;
 
-    public static final String SUPER_ADMIN = "root";
-
-    public static final String SUPER_PASSWORD = "root";
-
     /** 执行保存 log 的方法 */
     private String myLogCls = "";
 
     /** 是否允许多用户组 */
     private boolean multiUserGroup = true;
 
-    /** 超级管理员 */
-    private String super_admin = SUPER_ADMIN;
-
-    /** 超级管理员的密码 */
-    private String super_password = SUPER_PASSWORD;
-
     /** 超级管理员用户组 token */
     private String root_token = "";
 
-    /** 服务的 port */
-    private int port = -1;
-
     private Map<String, TableTemplateConfiguration> templateCfg;
-
-    public int getPort() {
-        return port;
-    }
-
-    public IgniteConfiguration setPort(int port) {
-        this.port = port;
-        return this;
-    }
 
     public boolean isMultiUserGroup() {
         return multiUserGroup;
@@ -665,24 +643,6 @@ public class IgniteConfiguration {
 
     public IgniteConfiguration setMultiUserGroup(boolean multiUserGroup) {
         this.multiUserGroup = multiUserGroup;
-        return this;
-    }
-
-    public String getSuper_admin() {
-        return super_admin;
-    }
-
-    public IgniteConfiguration setSuper_admin(String super_admin) {
-        this.super_admin = super_admin;
-        return this;
-    }
-
-    public String getSuper_password() {
-        return super_password;
-    }
-
-    public IgniteConfiguration setSuper_password(String super_password) {
-        this.super_password = super_password;
         return this;
     }
 
@@ -731,9 +691,6 @@ public class IgniteConfiguration {
 
         // 扩展
         multiUserGroup = cfg.isMultiUserGroup();
-        super_admin = cfg.getSuper_admin();
-        super_password = cfg.getSuper_password();
-        port = cfg.getPort();
         root_token = cfg.getRoot_token();
         myLogCls = cfg.getMyLogCls();
         templateCfg = cfg.getTemplateConfiguration();
