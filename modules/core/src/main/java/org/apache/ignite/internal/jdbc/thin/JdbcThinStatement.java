@@ -128,9 +128,35 @@ public class JdbcThinStatement implements Statement {
     /** Cancellation mutex. */
     final Object cancellationMux = new Object();
 
-    private IMySqlAst mySqlAst = MySqlAstService.getInstance().getMySqlAst();
+    private IMySqlAst mySqlAst = getMySqlAst(); //MySqlAstService.getInstance().getMySqlAst();
 
-    private IMyLoadScript myLoadScript = MyLoadScriptService.getInstance().getMyLoadScript();
+    private IMyLoadScript myLoadScript = getMyLoadScript(); //MyLoadScriptService.getInstance().getMyLoadScript();
+
+    private IMySqlAst getMySqlAst()
+    {
+        IMySqlAst mySqlAst = null;
+        try {
+            mySqlAst = MySqlAstService.getInstance().getMySqlAst();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return mySqlAst;
+    }
+
+    private IMyLoadScript getMyLoadScript()
+    {
+        IMyLoadScript myLoadScript = null;
+        try {
+            myLoadScript = MyLoadScriptService.getInstance().getMyLoadScript();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return myLoadScript;
+    }
 
     private List<List<String>> reList(final List<List<String>> lsts)
     {
@@ -168,7 +194,7 @@ public class JdbcThinStatement implements Statement {
 
     public String myExecuteQuery(String sql) throws SQLException {
         if (!Strings.isNullOrEmpty(this.conn.getUserToken())) {
-            List<List<String>> myLst = reList(mySqlAst.getSmartSegment(sql));
+
             // 如果 mylst 中包括：loadFromNative 函数，则先执行这个函数来提交给服务器
 
             //String mysql0 = String.format("select smartSql(%s, ?)", this.conn.getGroup_id());
@@ -176,8 +202,14 @@ public class JdbcThinStatement implements Statement {
             //String mysql0 = "select my_line_inary(?)";
             List<Object> lst = new ArrayList<Object>();
             lst.add(MyLineToBinary.objToBytes(this.conn.getUserToken()));
-            //lst.add(MyLineToBinary.objToBytes(sql));
-            lst.add(MyLineToBinary.objToBytes(myLst));
+            if (this.mySqlAst != null && this.myLoadScript != null) {
+                List<List<String>> myLst = reList(mySqlAst.getSmartSegment(sql));
+                lst.add(MyLineToBinary.objToBytes(myLst));
+            }
+            else
+            {
+                lst.add(MyLineToBinary.objToBytes(sql));
+            }
 
             //lst.add(sql);
             execute0(JdbcStatementType.SELECT_STATEMENT_TYPE, mysql0, lst);
