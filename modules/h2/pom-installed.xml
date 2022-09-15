@@ -164,10 +164,10 @@
     <karaf.version>4.0.2</karaf.version>
     <opencensus.version>0.28.2</opencensus.version>
     <jtidy.version>r938</jtidy.version>
-    <scala.library.version>2.11.12</scala.library.version>
+    <scala.library.version>2.12.6</scala.library.version>
     <jotm.version>2.2.3</jotm.version>
     <osgi.core.version>5.0.0</osgi.core.version>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <hadoop.version>2.9.2</hadoop.version>
     <gpg.useagent>true</gpg.useagent>
@@ -184,11 +184,11 @@
     <jsch.version>0.1.54</jsch.version>
     <commons.dbcp.version>1.4</commons.dbcp.version>
     <distMgmtSnapshotsName>Apache Development Snapshot Repository</distMgmtSnapshotsName>
-    <bouncycastle.version>1.68</bouncycastle.version>
     <kafka.version>2.2.2</kafka.version>
-    <zstd.version>1.5.0-4</zstd.version>
-    <easymock.version>3.4</easymock.version>
+    <bouncycastle.version>1.68</bouncycastle.version>
     <httpcore.version>4.4.3</httpcore.version>
+    <easymock.version>3.4</easymock.version>
+    <zstd.version>1.5.0-4</zstd.version>
     <jboss.rmi.version>1.0.6.Final</jboss.rmi.version>
     <jetty.version>9.4.43.v20210629</jetty.version>
     <gridgain.version>8.8.20</gridgain.version>
@@ -207,11 +207,11 @@
     <aspectj.bundle.version>1.9.8</aspectj.bundle.version>
     <rocketmq.version>4.4.0</rocketmq.version>
     <yammer.metrics.core.version>2.2.0</yammer.metrics.core.version>
-    <guava.retrying.version>2.0.0</guava.retrying.version>
     <commons.beanutils.version>1.9.4</commons.beanutils.version>
+    <guava.retrying.version>2.0.0</guava.retrying.version>
     <log4j.version>2.17.1</log4j.version>
-    <zkclient.version>0.5</zkclient.version>
     <commons.codec.version>1.15</commons.codec.version>
+    <zkclient.version>0.5</zkclient.version>
     <jsonlib.bundle.version>2.4_1</jsonlib.bundle.version>
     <activemq.version>5.12.0</activemq.version>
     <paho.version>1.0.2</paho.version>
@@ -219,17 +219,17 @@
     <javassist.version>3.21.0-GA</javassist.version>
     <ignite.edition>apache-ignite</ignite.edition>
     <jackson.version>2.13.3</jackson.version>
-    <spring.version>5.2.21.RELEASE</spring.version>
-    <failIfNoTests>false</failIfNoTests>
     <ezmorph.bundle.version>1.0.6_1</ezmorph.bundle.version>
+    <failIfNoTests>false</failIfNoTests>
+    <spring.version>5.2.21.RELEASE</spring.version>
     <docfx.exec>docfx</docfx.exec>
-    <spark.version>2.3.3</spark.version>
     <curator.test.version>2.9.1</curator.test.version>
-    <jsonlib.version>2.4</jsonlib.version>
+    <spark.version>2.3.3</spark.version>
     <curator.version>4.2.0</curator.version>
+    <jsonlib.version>2.4</jsonlib.version>
     <commons.compress.version>1.20</commons.compress.version>
-    <reflections.version>0.11.7</reflections.version>
     <asm.version>4.2</asm.version>
+    <reflections.version>0.11.7</reflections.version>
     <zookeeper.version>3.4.14</zookeeper.version>
     <tomcat.version>9.0.62</tomcat.version>
     <jsch.bundle.version>0.1.54_1</jsch.bundle.version>

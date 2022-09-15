@@ -34,32 +34,32 @@ public class MyInitFuncImpl implements IInitFunc {
         GridKernalContext ctx = ((IgniteEx)ignite).context();
         IgniteH2Indexing h2Indexing = (IgniteH2Indexing)ctx.query().getIndexing();
         ConnectionManager connMgr = h2Indexing.connections();
-        System.out.println("自定义方法的初始化");
+        //System.out.println("自定义方法的初始化");
 
         try {
             String clause = "CREATE ALIAS IF NOT EXISTS auto_id FOR \"org.tools.MyPlusFunc.auto_id\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：auto_id 初始化成功！");
+            //System.out.println("自定义方法：auto_id 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS smartSql FOR \"org.tools.MyPlusFunc.smartSql\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：smartSql 初始化成功！");
+            //System.out.println("自定义方法：smartSql 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_fun FOR \"org.tools.MyPlusFunc.myFun\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：my_fun 初始化成功！");
+            //System.out.println("自定义方法：my_fun 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke FOR \"org.tools.MyPlusFunc.myInvoke\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：my_invoke 初始化成功！");
+            //System.out.println("自定义方法：my_invoke 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke_link FOR \"org.tools.MyPlusFunc.myInvokeLink\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：my_invoke_link 初始化成功！");
+            //System.out.println("自定义方法：my_invoke_link 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke_all FOR \"org.tools.MyPlusFunc.myInvokeAllFuncScenes\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：my_invoke_all 初始化成功！");
+            //System.out.println("自定义方法：my_invoke_all 初始化成功！");
 
 //            clause = "CREATE ALIAS IF NOT EXISTS nth FOR \"org.tools.MyPlusFunc.nth\"";
 //            connMgr.executeStatement("PUBLIC", clause);
@@ -71,20 +71,24 @@ public class MyInitFuncImpl implements IInitFunc {
 
             clause = "CREATE ALIAS IF NOT EXISTS show_msg FOR \"org.tools.MyPlusFunc.showMsg\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：show_msg 初始化成功！");
+            //System.out.println("自定义方法：show_msg 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS get_scheduler FOR \"org.tools.MyPlusFunc.getScheduler\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：get_scheduler 初始化成功！");
+            //System.out.println("自定义方法：get_scheduler 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS hasConnPermission FOR \"org.tools.MyPlusFunc.hasConnPermission\"";
             connMgr.executeStatement("PUBLIC", clause);
-            System.out.println("自定义方法：hasConnPermission 初始化成功！");
+            //System.out.println("自定义方法：hasConnPermission 初始化成功！");
 
 
-//            clause = "CREATE ALIAS IF NOT EXISTS my_line_binary FOR \"org.tools.MyPlusFunc.my_line_binary\"";
-//            connMgr.executeStatement("PUBLIC", clause);
-//            System.out.println("自定义方法：my_line_binary 初始化成功！（这个方法是用作测试的）");
+            clause = "CREATE ALIAS IF NOT EXISTS show_train_data FOR \"org.tools.MyPlusFunc.showTrainData\"";
+            connMgr.executeStatement("PUBLIC", clause);
+            System.out.println("自定义方法：showTrainData 初始化成功！");
+
+            clause = "CREATE ALIAS IF NOT EXISTS train_matrix_single FOR \"org.tools.MyPlusFunc.train_matrix_single\"";
+            connMgr.executeStatement("PUBLIC", clause);
+            System.out.println("自定义方法：train_matrix_single 初始化成功！");
 
             CacheConfiguration<?, ?> template_cfg = new CacheConfiguration<>("MyMeta_template*").setSqlSchema("MY_META");
             template_cfg.setCacheMode(CacheMode.REPLICATED);
@@ -114,58 +118,64 @@ public class MyInitFuncImpl implements IInitFunc {
         GridKernalContext ctx = ((IgniteEx)ignite).context();
         IgniteH2Indexing h2Indexing = (IgniteH2Indexing)ctx.query().getIndexing();
         ConnectionManager connMgr = h2Indexing.connections();
-        System.out.println(schemaName + ": 自定义方法的初始化");
+        //System.out.println(schemaName + ": 自定义方法的初始化");
 
         schemaName = schemaName.toUpperCase();
 
         try {
             String clause = "CREATE ALIAS IF NOT EXISTS auto_id FOR \"org.tools.MyPlusFunc.auto_id\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：auto_id 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：auto_id 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_fun FOR \"org.tools.MyPlusFunc.myFun\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：my_fun 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：my_fun 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke FOR \"org.tools.MyPlusFunc.myInvoke\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：my_invoke 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：my_invoke 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke_link FOR \"org.tools.MyPlusFunc.myInvokeLink\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + "：my_invoke_link 初始化成功！");
+            //System.out.println(schemaName + "：my_invoke_link 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS my_invoke_all FOR \"org.tools.MyPlusFunc.myInvokeAllFuncScenes\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + "：my_invoke_all 初始化成功！");
+            //System.out.println(schemaName + "：my_invoke_all 初始化成功！");
 
 //            clause = "CREATE ALIAS IF NOT EXISTS nth FOR \"org.tools.MyPlusFunc.nth\"";
 //            connMgr.executeStatement(schemaName, clause);
-//            System.out.println(schemaName + ": 自定义方法：nth 初始化成功！");
+//            //System.out.println(schemaName + ": 自定义方法：nth 初始化成功！");
 //
 //            clause = "CREATE ALIAS IF NOT EXISTS first FOR \"org.tools.MyPlusFunc.first\"";
 //            connMgr.executeStatement(schemaName, clause);
-//            System.out.println(schemaName + ": 自定义方法：first 初始化成功！");
+//            //System.out.println(schemaName + ": 自定义方法：first 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS show_msg FOR \"org.tools.MyPlusFunc.showMsg\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：show_msg 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：show_msg 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS get_scheduler FOR \"org.tools.MyPlusFunc.getScheduler\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：get_scheduler 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：get_scheduler 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS hasConnPermission FOR \"org.tools.MyPlusFunc.hasConnPermission\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：hasConnPermission 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：hasConnPermission 初始化成功！");
 
             clause = "CREATE ALIAS IF NOT EXISTS smartSql FOR \"org.tools.MyPlusFunc.smartSql\"";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：smartSql 初始化成功！");
+            //System.out.println(schemaName + ": 自定义方法：smartSql 初始化成功！");
+
+            clause = "CREATE ALIAS IF NOT EXISTS showTrainData FOR \"org.tools.MyPlusFunc.showTrainData\"";
+            connMgr.executeStatement(schemaName, clause);
+
+            clause = "CREATE ALIAS IF NOT EXISTS train_matrix_single FOR \"org.tools.MyPlusFunc.train_matrix_single\"";
+            connMgr.executeStatement(schemaName, clause);
 
 //            clause = "CREATE ALIAS IF NOT EXISTS my_line_binary FOR \"org.tools.MyPlusFunc.my_line_binary\"";
 //            connMgr.executeStatement(schemaName, clause);
-//            System.out.println(schemaName + ": 自定义方法：my_line_binary 初始化成功！（这个方法是用作测试的）");
+//            //System.out.println(schemaName + ": 自定义方法：my_line_binary 初始化成功！（这个方法是用作测试的）");
         } catch (IgniteCheckedException var5) {
             var5.printStackTrace();
         }
@@ -182,17 +192,20 @@ public class MyInitFuncImpl implements IInitFunc {
         try {
             String clause = "DROP ALIAS IF EXISTS auto_id";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：auto_id 删除成功！");
+            //System.out.println(schemaName + ": 自定义方法：auto_id 删除成功！");
             clause = "DROP ALIAS IF EXISTS my_fun";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：my_fun 删除成功！");
+            //System.out.println(schemaName + ": 自定义方法：my_fun 删除成功！");
             clause = "DROP ALIAS IF EXISTS my_invoke";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：my_invoke 删除成功！");
+            //System.out.println(schemaName + ": 自定义方法：my_invoke 删除成功！");
 
             clause = "DROP ALIAS IF EXISTS my_invoke_link";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：my_invoke_link 删除成功！");
+
+            clause = "DROP ALIAS IF EXISTS my_invoke_all";
+            connMgr.executeStatement(schemaName, clause);
+            //System.out.println(schemaName + ": 自定义方法：my_invoke_link 删除成功！");
 
 //            clause = "DROP ALIAS IF EXISTS nth FOR \"org.tools.MyPlusFunc.nth\"";
 //            connMgr.executeStatement(schemaName, clause);
@@ -202,18 +215,21 @@ public class MyInitFuncImpl implements IInitFunc {
 //            System.out.println("自定义方法：first 初始化成功！");
             clause = "DROP ALIAS IF EXISTS show_msg";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：show_msg 删除成功！");
+            //System.out.println(schemaName + ": 自定义方法：show_msg 删除成功！");
             clause = "DROP ALIAS IF EXISTS get_scheduler";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：get_scheduler 删除成功！");
+            //System.out.println(schemaName + ": 自定义方法：get_scheduler 删除成功！");
             clause = "DROP ALIAS IF EXISTS hasConnPermission";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：hasConnPermission 删除成功！");
+            //System.out.println(schemaName + ": 自定义方法：hasConnPermission 删除成功！");
             clause = "DROP ALIAS IF EXISTS smartSql";
             connMgr.executeStatement(schemaName, clause);
-            System.out.println(schemaName + ": 自定义方法：smartSql 删除成功！");
-//            clause = "DROP TABLE IF EXISTS my_line_binary FOR \"org.tools.MyPlusFunc.my_line_binary\"";
-//            connMgr.executeStatement(schemaName, clause);
+            //System.out.println(schemaName + ": 自定义方法：smartSql 删除成功！");
+            clause = "DROP ALIAS IF EXISTS showTrainData";
+            connMgr.executeStatement(schemaName, clause);
+
+            clause = "DROP ALIAS IF EXISTS train_matrix_single";
+            connMgr.executeStatement(schemaName, clause);
 //            System.out.println("自定义方法：my_line_binary 初始化成功！（这个方法是用作测试的）");
         } catch (IgniteCheckedException var5) {
             var5.printStackTrace();

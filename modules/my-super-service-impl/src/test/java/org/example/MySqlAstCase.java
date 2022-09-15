@@ -37,4 +37,5 @@ public class MySqlAstCase {
         Object ast = mySqlAst.sqlToAst(mySqlAst.lineToList("f(a, b+c, g(q+w, e-r))"));
         System.out.println(ast);
     }
+
 }

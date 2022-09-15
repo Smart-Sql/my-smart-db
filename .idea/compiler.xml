@@ -7,27 +7,31 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ignite-ml" />
         <module name="ignite-schedule" />
         <module name="my-super-service" />
         <module name="ignite-core" />
-        <module name="my-back-up" />
         <module name="ignite-indexing" />
+        <module name="ignite-tensorflow" />
         <module name="ignite-geospatial" />
+        <module name="ignite-h2" />
         <module name="ignite-spring" />
-        <module name="my-thin-client-service" />
+        <module name="my-back-up" />
         <module name="my-thin-client" />
         <module name="my-super-service-impl" />
-        <module name="ignite-h2" />
+        <module name="my-thin-client-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="apache-ignite" target="11" />
       <module name="ignite-core" target="11" />
       <module name="ignite-geospatial" target="11" />
-      <module name="ignite-h2" target="11" />
+      <module name="ignite-h2" target="8" />
       <module name="ignite-indexing" target="11" />
+      <module name="ignite-ml" target="11" />
       <module name="ignite-schedule" target="11" />
       <module name="ignite-spring" target="11" />
+      <module name="ignite-tensorflow" target="11" />
       <module name="my-back-up" target="1.8" />
       <module name="my-super-service" target="1.8" />
       <module name="my-super-service-impl" target="1.8" />
@@ -37,12 +41,14 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ignite-core" options="--add-exports java.base/jdk.internal.misc=ALL-UNNAMED --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-exports java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED --add-exports jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
-      <module name="ignite-geospatial" options="--add-exports java.base/jdk.internal.misc=ALL-UNNAMED --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-exports java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED --add-exports jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
-      <module name="ignite-h2" options="--add-exports java.base/jdk.internal.misc=ALL-UNNAMED --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-exports java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED --add-exports jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
-      <module name="ignite-indexing" options="--add-exports java.base/jdk.internal.misc=ALL-UNNAMED --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-exports java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED --add-exports jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
-      <module name="ignite-schedule" options="--add-exports java.base/jdk.internal.misc=ALL-UNNAMED --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-exports java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED --add-exports jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
-      <module name="ignite-spring" options="--add-exports java.base/jdk.internal.misc=ALL-UNNAMED --add-exports java.base/sun.nio.ch=ALL-UNNAMED --add-exports java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED --add-exports jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+      <module name="ignite-core" options="" />
+      <module name="ignite-geospatial" options="" />
+      <module name="ignite-h2" options="" />
+      <module name="ignite-indexing" options="" />
+      <module name="ignite-ml" options="" />
+      <module name="ignite-schedule" options="" />
+      <module name="ignite-spring" options="" />
+      <module name="ignite-tensorflow" options="" />
     </option>
   </component>
 </project>

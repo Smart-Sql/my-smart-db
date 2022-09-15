@@ -7,8 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/modules/geospatial/ignite-geospatial.iml" filepath="$PROJECT_DIR$/modules/geospatial/ignite-geospatial.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/h2/ignite-h2.iml" filepath="$PROJECT_DIR$/modules/h2/ignite-h2.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/indexing/ignite-indexing.iml" filepath="$PROJECT_DIR$/modules/indexing/ignite-indexing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/ml/ignite-ml.iml" filepath="$PROJECT_DIR$/modules/ml/ignite-ml.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/schedule/ignite-schedule.iml" filepath="$PROJECT_DIR$/modules/schedule/ignite-schedule.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/spring/ignite-spring.iml" filepath="$PROJECT_DIR$/modules/spring/ignite-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/tensorflow/ignite-tensorflow.iml" filepath="$PROJECT_DIR$/modules/tensorflow/ignite-tensorflow.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-back-up/my-back-up.iml" filepath="$PROJECT_DIR$/modules/my-back-up/my-back-up.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-super-service/my-super-service.iml" filepath="$PROJECT_DIR$/modules/my-super-service/my-super-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-super-service-impl/my-super-service-impl.iml" filepath="$PROJECT_DIR$/modules/my-super-service-impl/my-super-service-impl.iml" />

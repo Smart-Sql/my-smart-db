@@ -47,6 +47,8 @@
         <module>modules/h2</module>
         <module>modules/geospatial</module>
         <module>modules/spring</module>
+        <module>modules/ml</module>
+        <module>modules/tensorflow</module>
         <module>modules/my-super-service</module>
         <module>modules/my-super-service-impl</module>
         <module>modules/my-back-up</module>

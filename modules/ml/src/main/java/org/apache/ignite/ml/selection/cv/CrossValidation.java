@@ -1,0 +1,117 @@
+/*
+ * Copyright 2019 GridGain Systems, Inc. and Contributors.
+ *
+ * Licensed under the GridGain Community Edition License (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.gridgain.com/products/software/community-edition/gridgain-community-edition-license
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.ignite.ml.selection.cv;
+
+import org.apache.ignite.Ignite;
+import org.apache.ignite.IgniteCache;
+import org.apache.ignite.ml.IgniteModel;
+import org.apache.ignite.ml.dataset.impl.cache.CacheBasedDatasetBuilder;
+import org.apache.ignite.ml.math.primitives.vector.Vector;
+import org.apache.ignite.ml.pipeline.PipelineMdl;
+import org.apache.ignite.ml.selection.scoring.cursor.CacheBasedLabelPairCursor;
+
+/**
+ * Cross validation score calculator. Cross validation is an approach that allows to avoid overfitting that is made the
+ * following way: the training set is split into k smaller sets. The following procedure is followed for each of the k
+ * “folds”:
+ * <ul>
+ * <li>A model is trained using k-1 of the folds as training data;</li>
+ * <li>the resulting model is validated on the remaining part of the data (i.e., it is used as a test set to compute
+ * a performance measure such as accuracy).</li>
+ * </ul>
+ *
+ * @param <M> Type of model.
+ * @param <L> Type of a label (truth or prediction).
+ * @param <K> Type of a key in {@code upstream} data.
+ * @param <V> Type of a value in {@code upstream} data.
+ */
+public class CrossValidation<M extends IgniteModel<Vector, L>, L, K, V> extends AbstractCrossValidation<M, L, K, V> {
+    /** Ignite. */
+    private Ignite ignite;
+
+    /** Upstream cache. */
+    private IgniteCache<K, V> upstreamCache;
+
+    /**
+     * Calculates score by folds.
+     */
+    @Override public double[] scoreByFolds() {
+        double[] locScores;
+
+        locScores = isRunningOnPipeline ? scorePipelineOnIgnite() : scoreOnIgnite();
+
+        return locScores;
+    }
+
+    /**
+     * Calculate score on pipeline based on Ignite data (upstream cache).
+     *
+     * @return Array of scores of the estimator for each run of the cross validation.
+     */
+    private double[] scorePipelineOnIgnite() {
+        return scorePipeline(
+            predicate -> new CacheBasedDatasetBuilder<>(
+                ignite,
+                upstreamCache,
+                (k, v) -> filter.apply(k, v) && predicate.apply(k, v)
+            ),
+            (predicate, mdl) -> new CacheBasedLabelPairCursor<>(
+                upstreamCache,
+                (k, v) -> filter.apply(k, v) && !predicate.apply(k, v),
+                ((PipelineMdl<K, V>)mdl).getPreprocessor(),
+                mdl
+            )
+        );
+    }
+
+    /**
+     * Computes cross-validated metrics.
+     *
+     * @return Array of scores of the estimator for each run of the cross validation.
+     */
+    private double[] scoreOnIgnite() {
+        return score(
+            predicate -> new CacheBasedDatasetBuilder<>(
+                ignite,
+                upstreamCache,
+                (k, v) -> filter.apply(k, v) && predicate.apply(k, v)
+            ),
+            (predicate, mdl) -> new CacheBasedLabelPairCursor<>(
+                upstreamCache,
+                (k, v) -> filter.apply(k, v) && !predicate.apply(k, v),
+                preprocessor,
+                mdl
+            )
+        );
+    }
+
+    /**
+     * @param ignite Ignite.
+     */
+    public CrossValidation<M, L, K, V> withIgnite(Ignite ignite) {
+        this.ignite = ignite;
+        return this;
+    }
+
+    /**
+     * @param upstreamCache Upstream cache.
+     */
+    public CrossValidation<M, L, K, V> withUpstreamCache(IgniteCache<K, V> upstreamCache) {
+        this.upstreamCache = upstreamCache;
+        return this;
+    }
+}

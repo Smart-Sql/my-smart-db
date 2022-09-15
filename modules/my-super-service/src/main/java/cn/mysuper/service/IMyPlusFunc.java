@@ -1,5 +1,8 @@
 package cn.mysuper.service;
 
+import java.sql.ResultSet;
+import java.util.List;
+
 /**
  * 自定义方法
  * */
@@ -39,4 +42,11 @@ public interface IMyPlusFunc {
 
     public String superSql(final byte[] var1, final byte[] var2);
     //public String superSql(final String userToken, final String sql);
+
+    /**
+     * 显示训练数据
+     * */
+    public List showTrainData(final String cacheName, final Integer item_size);
+
+    public void train_matrix_single(final String dataset_name, final String table_name, final String value);
 }

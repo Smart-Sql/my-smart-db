@@ -270,6 +270,10 @@ public class JdbcThinConnection implements Connection {
         this.userToken = userToken;
     }
 
+    public ConnectionProperties getConnProps() {
+        return connProps;
+    }
+
     /**
      * Creates new connection.
      *

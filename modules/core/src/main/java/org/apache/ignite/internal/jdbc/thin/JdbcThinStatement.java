@@ -19,25 +19,22 @@ package org.apache.ignite.internal.jdbc.thin;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.sql.BatchUpdateException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.sql.SQLTimeoutException;
-import java.sql.SQLWarning;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
 import cn.myservice.MyLoadScriptService;
 import cn.myservice.MySqlAstService;
 import cn.mysuper.service.IMySqlAst;
 import cn.smart.service.IMyLoadScript;
 import com.google.common.base.Strings;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import org.apache.ignite.Ignition;
 import org.apache.ignite.cache.query.Query;
+import org.apache.ignite.client.ClientCache;
+import org.apache.ignite.client.IgniteClient;
+import org.apache.ignite.configuration.ClientConfiguration;
 import org.apache.ignite.internal.processors.cache.query.IgniteQueryErrorCode;
 import org.apache.ignite.internal.processors.odbc.ClientListenerResponse;
 import org.apache.ignite.internal.processors.odbc.SqlStateCode;
@@ -60,6 +57,7 @@ import org.apache.ignite.internal.sql.SqlParseException;
 import org.apache.ignite.internal.sql.SqlParser;
 import org.apache.ignite.internal.sql.command.SqlCommand;
 import org.apache.ignite.internal.sql.command.SqlSetStreamingCommand;
+import org.apache.ignite.internal.util.HostAndPortRange;
 import org.apache.ignite.internal.util.typedef.F;
 import org.tools.MyLineToBinary;
 
@@ -132,6 +130,8 @@ public class JdbcThinStatement implements Statement {
 
     private IMyLoadScript myLoadScript = getMyLoadScript(); //MyLoadScriptService.getInstance().getMyLoadScript();
 
+    private IgniteClient client;
+
     private IMySqlAst getMySqlAst()
     {
         IMySqlAst mySqlAst = null;
@@ -158,8 +158,11 @@ public class JdbcThinStatement implements Statement {
         return myLoadScript;
     }
 
-    private List<List<String>> reList(final List<List<String>> lsts)
-    {
+    private void saveMlData(final String dataset_name, final String table_name, final String value) throws SQLException {
+        myLoadScript.loadCsv(client, dataset_name, table_name, value);
+    }
+
+    private List<List<String>> reList(final List<List<String>> lsts) throws SQLException {
         List<List<String>> myLsts = new ArrayList<>();
         for (List<String> lst : lsts)
         {
@@ -169,6 +172,85 @@ public class JdbcThinStatement implements Statement {
                 String code = myLoadScript.loadFromNative(path);
                 String[] myLoadFromNative = new String[]{"loadCode", "(", code, ")", ";"};
                 myLsts.add(Arrays.asList(myLoadFromNative));
+            }
+            else if (lst.size() > 0 && lst.get(0).equals("loadCsv"))
+            {
+                if(lst.get(lst.size() - 1).equals(";"))
+                {
+                    List<String> lst_1 = lst.subList(2, lst.size() - 2);
+                    StringBuilder sb = new StringBuilder();
+                    for (String line : lst_1)
+                    {
+                        sb.append(line);
+                    }
+
+                    Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
+                    Map<String, String> csvMap = gson.fromJson(sb.toString(), new TypeToken<Hashtable<String, String>>() {}.getType());
+
+                    String code = myLoadScript.loadFromNative(csvMap.get("csv_path"));
+                    String[] vs = code.split("\n|\r");
+                    if (vs.length > 0) {
+                        String dataset_name = csvMap.get("dataset_name").toLowerCase();
+                        String table_name = csvMap.get("table_name").toLowerCase();
+                        for (String dv : vs) {
+                            saveMlData(dataset_name, table_name, dv);
+                        }
+                    }
+
+                    List<String> lst_3 = new ArrayList<>();
+                    lst_3.add("println");
+                    lst_3.add("(");
+                    lst_3.add("'上传数据成功！'");
+                    lst_3.add(")");
+                    lst_3.add(";");
+                    myLsts.add(lst_3);
+
+//                    csvMap.remove("csv_path");
+//                    csvMap.put("csv_code", code);
+//                    List<String> lst_2 = mySqlAst.lineToList(gson.toJson(csvMap));
+//
+//                    List<String> lst_3 = new ArrayList<>();
+//                    lst_3.add("loadCsv");
+//                    lst_3.add("(");
+//                    lst_3.addAll(lst_2);
+//                    lst_3.add(")");
+//                    lst_3.add(";");
+//                    myLsts.add(lst_3);
+                }
+                else if(lst.get(lst.size() - 1).equals(")"))
+                {
+                    List<String> lst_1 = lst.subList(2, lst.size() - 1);
+                    StringBuilder sb = new StringBuilder();
+                    for (String line : lst_1)
+                    {
+                        sb.append(line);
+                    }
+
+                    Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
+                    Map<String, String> csvMap = gson.fromJson(sb.toString(), new TypeToken<Hashtable<String, String>>() {}.getType());
+
+                    String code = myLoadScript.loadFromNative(csvMap.get("csv_path"));
+                    String[] vs = code.split("\n|\r");
+                    if (vs.length > 0) {
+                        String dataset_name = csvMap.get("dataset_name").toLowerCase();
+                        String table_name = csvMap.get("table_name").toLowerCase();
+                        for (String dv : vs) {
+                            saveMlData(dataset_name, table_name, dv);
+                        }
+                    }
+
+//                    csvMap.remove("csv_path");
+//                    csvMap.put("csv_code", code);
+//                    List<String> lst_2 = mySqlAst.lineToList(gson.toJson(csvMap));
+//
+//                    List<String> lst_3 = new ArrayList<>();
+//                    lst_3.add("loadCsv");
+//                    lst_3.add("(");
+//                    lst_3.addAll(lst_2);
+//                    lst_3.add(")");
+//                    lst_3.add(";");
+//                    myLsts.add(lst_3);
+                }
             }
             else
             {
@@ -248,6 +330,15 @@ public class JdbcThinStatement implements Statement {
         this.conn = conn;
         this.resHoldability = resHoldability;
         this.schema = schema;
+
+        HostAndPortRange[] hostAndPortRanges = conn.getConnProps().getAddresses();
+        if (hostAndPortRanges.length > 0) {
+            HostAndPortRange hostAndPortRange = hostAndPortRanges[0];
+            //String host = hostAndPortRange.host();
+            String connStr = hostAndPortRange.toString();
+            ClientConfiguration cfg = new ClientConfiguration().setAddresses(connStr);
+            this.client = Ignition.startClient(cfg);
+        }
     }
 
     /** {@inheritDoc} */

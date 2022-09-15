@@ -5,6 +5,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.ignite.client.ClientAtomicLong;
+import org.apache.ignite.client.ClientCache;
+import org.apache.ignite.client.IgniteClient;
+import org.apache.ignite.ml.math.primitives.vector.Vector;
+import org.apache.ignite.ml.math.primitives.vector.VectorUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +35,24 @@ public class MyLoadScriptImpl implements IMyLoadScript {
     @Override
     public String loadCode(String code) {
         return code;
+    }
+
+    @Override
+    public void loadCsv(Object client, String dataset_name, String table_name, String value) {
+        IgniteClient igniteClient = (IgniteClient) client;
+        String cacheName = "sm_ml_" + dataset_name + "_" + table_name;
+        //ClientCache<Long, Vector> cache = igniteClient.getOrCreateCache(cacheName);
+        ClientCache<Long, Vector> cache = igniteClient.cache(cacheName);
+        ClientAtomicLong atomicLong = igniteClient.atomicLong(cacheName + "_key", 0L, true);
+        Long key = atomicLong.incrementAndGet();
+        String[] lst = value.split(",");
+        Double[] rs = new Double[lst.length];
+        for (int i = 0; i < lst.length; i++)
+        {
+            rs[i] = Double.parseDouble(lst[i]);
+        }
+        Vector vs = VectorUtils.of(rs);
+        cache.put(key, vs);
     }
 
     private String getUrlString(String url) throws IOException {

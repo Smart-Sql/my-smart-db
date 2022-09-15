@@ -4146,6 +4146,7 @@ org/apache/ignite/internal/processors/datastructures/GridCacheInternalKey.class
 org/apache/ignite/internal/processors/tracing/NoopTracing.class
 org/apache/ignite/internal/commandline/property/tasks/PropertyTask.class
 org/apache/ignite/internal/processors/cache/distributed/near/GridNearTxAbstractEnlistFuture$LockTimeoutObject.class
+org/apache/ignite/internal/jdbc/thin/JdbcThinStatement$1.class
 org/apache/ignite/internal/processors/cache/persistence/wal/reader/StandaloneNoopCommunicationSpi.class
 org/apache/ignite/internal/processors/cache/version/CacheVersionConflictResolver.class
 org/apache/ignite/cache/store/jdbc/CacheAbstractJdbcStore$LoadCacheCustomQueryWorker.class
@@ -4233,6 +4234,7 @@ org/apache/ignite/startup/BasicWarmupClosure$BaseWarmupCallable.class
 org/apache/ignite/spi/systemview/view/TransactionView.class
 org/jsr166/ConcurrentLinkedHashMap$KeyIterator.class
 org/apache/ignite/internal/processors/metric/impl/DoubleMetricImpl.class
+org/apache/ignite/internal/jdbc/thin/JdbcThinStatement$2.class
 org/apache/ignite/internal/processors/cache/tree/updatelog/UpdateLogInnerIO.class
 org/apache/ignite/internal/processors/cache/extras/GridCacheAttributesObsoleteEntryExtras.class
 org/apache/ignite/configuration/BinaryConfiguration.class

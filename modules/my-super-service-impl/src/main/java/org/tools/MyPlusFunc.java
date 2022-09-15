@@ -3,18 +3,23 @@ package org.tools;
 import clojure.lang.RT;
 import cn.myservice.MyPlusFuncService;
 import cn.mysuper.service.IMyPlusFunc;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.ignite.Ignition;
 import org.gridgain.dml.util.MyCacheExUtil;
+import org.gridgain.internal.h2.tools.SimpleResultSet;
 import org.gridgain.myservice.MyPlusFuncImpl;
 import org.gridgain.plus.dml.MySmartSql;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
 import java.util.List;
 
 public class MyPlusFunc implements Serializable {
 
     private static final long serialVersionUID = 175563786053447344L;
     private static IMyPlusFunc myPlusFunc = new MyPlusFuncImpl();
+    private static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     /**
      * 获取 table 的自增长
@@ -115,6 +120,22 @@ public class MyPlusFunc implements Serializable {
 //            }
 //        }
         return myPlusFunc.superSql(userToken, sql);
+    }
+
+    public static String showTrainData(final String cacheName, final Integer item_size) {
+        List<double[]> lst = myPlusFunc.showTrainData(cacheName, item_size);
+
+        StringBuilder sb = new StringBuilder();
+        for (double[] m : lst)
+        {
+            sb.append(gson.toJson(m) + "\n");
+        }
+        return sb.toString();
+        //return gson.toJson(lst);
+    }
+
+    public static void train_matrix_single(String dataset_name, String table_name, String value) {
+        myPlusFunc.train_matrix_single(dataset_name, table_name, value);
     }
 
     public static String my_line_binary(byte[] bytes) {

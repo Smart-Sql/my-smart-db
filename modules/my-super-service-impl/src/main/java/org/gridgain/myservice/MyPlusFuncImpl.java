@@ -1,6 +1,8 @@
 package org.gridgain.myservice;
 
 import cn.mysuper.service.IMyPlusFunc;
+
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import org.apache.ignite.scheduler.SchedulerFuture;
 import org.gridgain.plus.dml.MySmartScenes;
 import org.gridgain.plus.sql.MySuperSql;
 import org.gridgain.plus.sql.jdbc.SmartJdbcFunc;
+import org.gridgain.smart.ml.MyTrianDataUtil;
 import org.smart.service.MySmartScenesService;
 import org.tools.MyGson;
 import org.tools.MyPlusUtil;
@@ -108,6 +111,16 @@ public class MyPlusFuncImpl implements IMyPlusFunc {
 //            System.out.println(r);
 //        }
         return MySuperSql.superSql(Ignition.ignite(), userToken, sql);
+    }
+
+    @Override
+    public List showTrainData(String cacheName, Integer item_size) {
+        return MyTrianDataUtil.showTrainData(Ignition.ignite(), cacheName, item_size);
+    }
+
+    @Override
+    public void train_matrix_single(String dataset_name, String table_name, String value) {
+        MyTrianDataUtil.train_matrix_single(Ignition.ignite(), dataset_name, table_name, value);
     }
 }
 

@@ -509,23 +509,23 @@
             <dependencies/>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.7.0</version>
-                        <configuration>
-                            <compilerArgs>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/jdk.internal.misc=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED</arg>
-                            </compilerArgs>
-                        </configuration>
-                    </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                        <version>3.7.0</version>-->
+<!--                        <configuration>-->
+<!--                            <compilerArgs>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/jdk.internal.misc=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED</arg>-->
+<!--                            </compilerArgs>-->
+<!--                        </configuration>-->
+<!--                    </plugin>-->
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -551,31 +551,31 @@
             <dependencies/>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.7.0</version>
-                        <configuration>
-                            <compilerArgs>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/jdk.internal.misc=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/java.io=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/java.nio=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/java.util=ALL-UNNAMED</arg>
-                                <arg>--add-exports</arg>
-                                <arg>java.base/java.lang=ALL-UNNAMED</arg>
-                            </compilerArgs>
-                        </configuration>
-                    </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                        <version>3.7.0</version>-->
+<!--                        <configuration>-->
+<!--                            <compilerArgs>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/jdk.internal.misc=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/java.io=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/java.nio=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/java.util=ALL-UNNAMED</arg>-->
+<!--                                <arg>&#45;&#45;add-exports</arg>-->
+<!--                                <arg>java.base/java.lang=ALL-UNNAMED</arg>-->
+<!--                            </compilerArgs>-->
+<!--                        </configuration>-->
+<!--                    </plugin>-->
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -700,24 +700,24 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <!--eclipse do not support duplicated package-info.java, in both src and test.-->
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>default-testCompile</id>
-                                <phase>test-compile</phase>
-                                <configuration>
-                                    <testExcludes>
-                                        <exclude>**/package-info.java</exclude>
-                                    </testExcludes>
-                                </configuration>
-                                <goals>
-                                    <goal>testCompile</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+<!--                    <plugin>-->
+<!--                        &lt;!&ndash;eclipse do not support duplicated package-info.java, in both src and test.&ndash;&gt;-->
+<!--                        <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>default-testCompile</id>-->
+<!--                                <phase>test-compile</phase>-->
+<!--                                <configuration>-->
+<!--                                    <testExcludes>-->
+<!--                                        <exclude>**/package-info.java</exclude>-->
+<!--                                    </testExcludes>-->
+<!--                                </configuration>-->
+<!--                                <goals>-->
+<!--                                    <goal>testCompile</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
                 </plugins>
                 <pluginManagement>
                     <plugins>
