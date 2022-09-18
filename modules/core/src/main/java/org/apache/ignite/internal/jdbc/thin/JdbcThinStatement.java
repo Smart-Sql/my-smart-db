@@ -205,17 +205,6 @@ public class JdbcThinStatement implements Statement {
                     lst_3.add(";");
                     myLsts.add(lst_3);
 
-//                    csvMap.remove("csv_path");
-//                    csvMap.put("csv_code", code);
-//                    List<String> lst_2 = mySqlAst.lineToList(gson.toJson(csvMap));
-//
-//                    List<String> lst_3 = new ArrayList<>();
-//                    lst_3.add("loadCsv");
-//                    lst_3.add("(");
-//                    lst_3.addAll(lst_2);
-//                    lst_3.add(")");
-//                    lst_3.add(";");
-//                    myLsts.add(lst_3);
                 }
                 else if(lst.get(lst.size() - 1).equals(")"))
                 {
@@ -239,17 +228,13 @@ public class JdbcThinStatement implements Statement {
                         }
                     }
 
-//                    csvMap.remove("csv_path");
-//                    csvMap.put("csv_code", code);
-//                    List<String> lst_2 = mySqlAst.lineToList(gson.toJson(csvMap));
-//
-//                    List<String> lst_3 = new ArrayList<>();
-//                    lst_3.add("loadCsv");
-//                    lst_3.add("(");
-//                    lst_3.addAll(lst_2);
-//                    lst_3.add(")");
-//                    lst_3.add(";");
-//                    myLsts.add(lst_3);
+                    List<String> lst_3 = new ArrayList<>();
+                    lst_3.add("println");
+                    lst_3.add("(");
+                    lst_3.add("'上传数据成功！'");
+                    lst_3.add(")");
+                    lst_3.add(";");
+                    myLsts.add(lst_3);
                 }
             }
             else
