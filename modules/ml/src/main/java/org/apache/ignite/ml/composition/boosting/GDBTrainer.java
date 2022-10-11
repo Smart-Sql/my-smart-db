@@ -95,8 +95,8 @@ public abstract class GDBTrainer extends DatasetTrainer<ModelsComposition, Doubl
     @Override protected <K, V> ModelsComposition updateModel(ModelsComposition mdl,
                                                              DatasetBuilder<K, V> datasetBuilder,
                                                              Preprocessor<K, V> preprocessor) {
-        if (!learnLabels(datasetBuilder, preprocessor))
-            return getLastTrainedModelOrThrowEmptyDatasetException(mdl);
+//        if (!learnLabels(datasetBuilder, preprocessor))
+//            return getLastTrainedModelOrThrowEmptyDatasetException(mdl);
 
         IgniteBiTuple<Double, Long> initAndSampleSize = computeInitialValue(envBuilder, datasetBuilder, preprocessor);
         if (initAndSampleSize == null)

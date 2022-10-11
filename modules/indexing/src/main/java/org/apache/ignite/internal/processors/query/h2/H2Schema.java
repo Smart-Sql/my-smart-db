@@ -46,8 +46,15 @@ public class H2Schema {
      * @param predefined Predefined flag.
      */
     public H2Schema(String schemaName, boolean predefined) {
-        this.schemaName = schemaName;
-        this.predefined = predefined;
+        if (schemaName.toLowerCase().equals("my_meta")) {
+            this.schemaName = schemaName;
+            this.predefined = true;
+        }
+        else
+        {
+            this.schemaName = schemaName;
+            this.predefined = predefined;
+        }
     }
 
     /**

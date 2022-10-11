@@ -579,14 +579,20 @@ public class JdbcThinStatement implements Statement {
 
     /** {@inheritDoc} */
     @Override public int executeUpdate(String sql) throws SQLException {
-        execute0(JdbcStatementType.UPDATE_STMT_TYPE, myExecuteQuery(sql), null);
-
-        int res = getUpdateCount();
-
-        if (res == -1)
-            throw new SQLException("The query is not DML statememt: " + sql);
-
-        return res;
+//        execute0(JdbcStatementType.UPDATE_STMT_TYPE, myExecuteQuery(sql), null);
+//
+//        int res = getUpdateCount();
+//
+//        if (res == -1)
+//            throw new SQLException("The query is not DML statememt: " + sql);
+//
+//        return res;
+        boolean f = this.execute(sql);
+        if (f == true)
+        {
+            return 0;
+        }
+        return -1;
     }
 
     /** {@inheritDoc} */

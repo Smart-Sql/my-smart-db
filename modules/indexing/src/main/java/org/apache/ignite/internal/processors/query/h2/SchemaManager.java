@@ -81,7 +81,8 @@ import static org.apache.ignite.internal.processors.metric.impl.MetricUtils.metr
  */
 public class SchemaManager {
     /** */
-    public static final String SQL_SCHEMA_VIEW = "schemas";
+    //public static final String SQL_SCHEMA_VIEW = "schemas";
+    public static final String SQL_SCHEMA_VIEW = "data_set";
 
     /** */
     public static final String SQL_SCHEMA_VIEW_DESC = "SQL schemas";
@@ -200,6 +201,7 @@ public class SchemaManager {
     public void start(String[] schemaNames) throws IgniteCheckedException {
         // Register PUBLIC schema which is always present.
         schemas.put(QueryUtils.DFLT_SCHEMA, new H2Schema(QueryUtils.DFLT_SCHEMA, true));
+        //schemas.put("MY_META", new H2Schema("MY_META", true));
 
         // Create system views.
         createSystemViews();
