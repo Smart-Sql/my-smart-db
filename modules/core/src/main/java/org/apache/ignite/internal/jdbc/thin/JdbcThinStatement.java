@@ -158,8 +158,8 @@ public class JdbcThinStatement implements Statement {
         return myLoadScript;
     }
 
-    private void saveMlData(final String dataset_name, final String table_name, final String value) throws SQLException {
-        myLoadScript.loadCsv(client, dataset_name, table_name, value);
+    private void saveMlData(final String schema_name, final String table_name, final String value) throws SQLException {
+        myLoadScript.loadCsv(client, schema_name, table_name, value);
     }
 
     private List<List<String>> reList(final List<List<String>> lsts) throws SQLException {
@@ -190,10 +190,10 @@ public class JdbcThinStatement implements Statement {
                     String code = myLoadScript.loadFromNative(csvMap.get("csv_path"));
                     String[] vs = code.split("\n|\r");
                     if (vs.length > 0) {
-                        String dataset_name = csvMap.get("dataset_name").toLowerCase();
+                        String schema_name = csvMap.get("schema_name").toLowerCase();
                         String table_name = csvMap.get("table_name").toLowerCase();
                         for (String dv : vs) {
-                            saveMlData(dataset_name, table_name, dv);
+                            saveMlData(schema_name, table_name, dv);
                         }
                     }
 
@@ -221,10 +221,10 @@ public class JdbcThinStatement implements Statement {
                     String code = myLoadScript.loadFromNative(csvMap.get("csv_path"));
                     String[] vs = code.split("\n|\r");
                     if (vs.length > 0) {
-                        String dataset_name = csvMap.get("dataset_name").toLowerCase();
+                        String schema_name = csvMap.get("schema_name").toLowerCase();
                         String table_name = csvMap.get("table_name").toLowerCase();
                         for (String dv : vs) {
-                            saveMlData(dataset_name, table_name, dv);
+                            saveMlData(schema_name, table_name, dv);
                         }
                     }
 

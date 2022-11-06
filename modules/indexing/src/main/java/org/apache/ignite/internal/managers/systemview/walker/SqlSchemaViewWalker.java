@@ -28,15 +28,15 @@ import org.apache.ignite.spi.systemview.view.SystemViewRowAttributeWalker;
 public class SqlSchemaViewWalker implements SystemViewRowAttributeWalker<SqlSchemaView> {
     /** {@inheritDoc} */
     @Override public void visitAll(AttributeVisitor v) {
-        //v.accept(0, "schemaName", String.class);
-        v.accept(0, "dataSetName", String.class);
+        v.accept(0, "schemaName", String.class);
+        //v.accept(0, "dataSetName", String.class);
         v.accept(1, "predefined", boolean.class);
     }
 
     /** {@inheritDoc} */
     @Override public void visitAll(SqlSchemaView row, AttributeWithValueVisitor v) {
-        //v.accept(0, "schemaName", String.class, row.schemaName());
-        v.accept(0, "dataSetName", String.class, row.schemaName());
+        v.accept(0, "schemaName", String.class, row.schemaName());
+        //v.accept(0, "dataSetName", String.class, row.schemaName());
         v.acceptBoolean(1, "predefined", row.predefined());
     }
 

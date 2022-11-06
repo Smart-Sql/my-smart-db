@@ -81,8 +81,8 @@ import static org.apache.ignite.internal.processors.metric.impl.MetricUtils.metr
  */
 public class SchemaManager {
     /** */
-    //public static final String SQL_SCHEMA_VIEW = "schemas";
-    public static final String SQL_SCHEMA_VIEW = "data_set";
+    public static final String SQL_SCHEMA_VIEW = "schemas";
+    //public static final String SQL_SCHEMA_VIEW = "data_set";
 
     /** */
     public static final String SQL_SCHEMA_VIEW_DESC = "SQL schemas";

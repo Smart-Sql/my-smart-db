@@ -1731,7 +1731,7 @@ public class Function extends Expression implements FunctionCall {
         return result;
     }
 
-    private Value round(Value v0, Value v1) {
+    public Value round(Value v0, Value v1) {
         BigDecimal bd = v0.getBigDecimal().setScale(v1 == null ? 0 : v1.getInt(), RoundingMode.HALF_UP);
         Value result;
         switch (type.getValueType()) {
@@ -1747,7 +1747,7 @@ public class Function extends Expression implements FunctionCall {
         return result;
     }
 
-    private static Value truncate(Session session, Value v0, Value v1) {
+    public static Value truncate(Session session, Value v0, Value v1) {
         Value result;
         int t = v0.getValueType();
         switch (t) {
@@ -1787,7 +1787,7 @@ public class Function extends Expression implements FunctionCall {
         return result;
     }
 
-    private Sequence getSequence(Session session, Value v0, Value v1) {
+    public Sequence getSequence(Session session, Value v0, Value v1) {
         String schemaName, sequenceName;
         if (v1 == null) {
             Parser p = new Parser(session);
@@ -1822,7 +1822,7 @@ public class Function extends Expression implements FunctionCall {
         return seq;
     }
 
-    private static long length(Value v) {
+    public static long length(Value v) {
         switch (v.getValueType()) {
         case Value.BLOB:
         case Value.CLOB:
@@ -1834,12 +1834,12 @@ public class Function extends Expression implements FunctionCall {
         }
     }
 
-    private static byte[] getPaddedArrayCopy(byte[] data, int blockSize) {
+    public static byte[] getPaddedArrayCopy(byte[] data, int blockSize) {
         int size = MathUtils.roundUpInt(data.length, blockSize);
         return Utils.copyBytes(data, size);
     }
 
-    private static byte[] decrypt(String algorithm, byte[] key, byte[] data) {
+    public static byte[] decrypt(String algorithm, byte[] key, byte[] data) {
         BlockCipher cipher = CipherFactory.getBlockCipher(algorithm);
         byte[] newKey = getPaddedArrayCopy(key, cipher.getKeyLength());
         cipher.setKey(newKey);
@@ -1848,7 +1848,7 @@ public class Function extends Expression implements FunctionCall {
         return newData;
     }
 
-    private static byte[] encrypt(String algorithm, byte[] key, byte[] data) {
+    public static byte[] encrypt(String algorithm, byte[] key, byte[] data) {
         BlockCipher cipher = CipherFactory.getBlockCipher(algorithm);
         byte[] newKey = getPaddedArrayCopy(key, cipher.getKeyLength());
         cipher.setKey(newKey);
@@ -1857,7 +1857,7 @@ public class Function extends Expression implements FunctionCall {
         return newData;
     }
 
-    private static Value getHash(String algorithm, Value value, int iterations) {
+    public static Value getHash(String algorithm, Value value, int iterations) {
         if (!"SHA256".equalsIgnoreCase(algorithm)) {
             throw DbException.getInvalidValueException("algorithm", algorithm);
         }
@@ -1891,7 +1891,7 @@ public class Function extends Expression implements FunctionCall {
         return s.substring(start, start + length);
     }
 
-    private static String repeat(String s, int count) {
+    public static String repeat(String s, int count) {
         StringBuilder buff = new StringBuilder(s.length() * count);
         while (count-- > 0) {
             buff.append(s);
@@ -1899,7 +1899,7 @@ public class Function extends Expression implements FunctionCall {
         return buff.toString();
     }
 
-    private static String rawToHex(String s) {
+    public static String rawToHex(String s) {
         int length = s.length();
         StringBuilder buff = new StringBuilder(4 * length);
         for (int i = 0; i < length; i++) {
@@ -1912,7 +1912,7 @@ public class Function extends Expression implements FunctionCall {
         return buff.toString();
     }
 
-    private static int locate(String search, String s, int start) {
+    public static int locate(String search, String s, int start) {
         if (start < 0) {
             int i = s.length() + start;
             return s.lastIndexOf(search, i) + 1;
@@ -1921,7 +1921,7 @@ public class Function extends Expression implements FunctionCall {
         return s.indexOf(search, i) + 1;
     }
 
-    private static String right(String s, int count) {
+    public static String right(String s, int count) {
         if (count < 0) {
             count = 0;
         } else if (count > s.length()) {
@@ -1930,7 +1930,7 @@ public class Function extends Expression implements FunctionCall {
         return s.substring(s.length() - count);
     }
 
-    private static String left(String s, int count) {
+    public static String left(String s, int count) {
         if (count < 0) {
             count = 0;
         } else if (count > s.length()) {
@@ -1939,7 +1939,7 @@ public class Function extends Expression implements FunctionCall {
         return s.substring(0, count);
     }
 
-    private static String insert(String s1, int start, int length, String s2) {
+    public static String insert(String s1, int start, int length, String s2) {
         if (s1 == null) {
             return s2;
         }
@@ -1958,7 +1958,7 @@ public class Function extends Expression implements FunctionCall {
         return s1.substring(0, start) + s2 + s1.substring(start + length);
     }
 
-    private static String hexToRaw(String s) {
+    public static String hexToRaw(String s) {
         // TODO function hextoraw compatibility with oracle
         int len = s.length();
         if (len % 4 != 0) {
@@ -1976,7 +1976,7 @@ public class Function extends Expression implements FunctionCall {
         return buff.toString();
     }
 
-    private static int getDifference(String s1, String s2) {
+    public static int getDifference(String s1, String s2) {
         // TODO function difference: compatibility with SQL Server and HSQLDB
         s1 = getSoundex(s1);
         s2 = getSoundex(s2);
@@ -1989,7 +1989,7 @@ public class Function extends Expression implements FunctionCall {
         return e;
     }
 
-    private static String translate(String original, String findChars,
+    public static String translate(String original, String findChars,
             String replaceChars) {
         if (StringUtils.isNullOrEmpty(original) ||
                 StringUtils.isNullOrEmpty(findChars)) {
@@ -2021,7 +2021,7 @@ public class Function extends Expression implements FunctionCall {
         return buff == null ? original : buff.toString();
     }
 
-    private static double roundMagic(double d) {
+    public static double roundMagic(double d) {
         if ((d < 0.000_000_000_000_1) && (d > -0.000_000_000_000_1)) {
             return 0.0;
         }
@@ -2056,7 +2056,7 @@ public class Function extends Expression implements FunctionCall {
         return Double.parseDouble(s.toString());
     }
 
-    private static String getSoundex(String s) {
+    public static String getSoundex(String s) {
         int len = s.length();
         char[] chars = { '0', '0', '0', '0' };
         char lastDigit = '0';
@@ -2081,7 +2081,7 @@ public class Function extends Expression implements FunctionCall {
         return new String(chars);
     }
 
-    private static Value oraHash(Value value, long bucket, long seed) {
+    public static Value oraHash(Value value, long bucket, long seed) {
         if ((bucket & 0xffff_ffff_0000_0000L) != 0L) {
             throw DbException.getInvalidValueException("bucket", bucket);
         }
@@ -2102,7 +2102,7 @@ public class Function extends Expression implements FunctionCall {
         return ValueLong.get((hc & Long.MAX_VALUE) % (bucket + 1));
     }
 
-    private static MessageDigest hashImpl(Value value, String algorithm) {
+    public static MessageDigest hashImpl(Value value, String algorithm) {
         MessageDigest md;
         switch (value.getValueType()) {
         case Value.NULL:
@@ -2142,7 +2142,7 @@ public class Function extends Expression implements FunctionCall {
         return md;
     }
 
-    private Value regexpReplace(String input, String regexp, String replacement, String regexpMode) {
+    public Value regexpReplace(String input, String regexp, String replacement, String regexpMode) {
         Mode mode = database.getMode();
         if (mode.regexpReplaceBackslashReferences) {
             if ((replacement.indexOf('\\') >= 0) || (replacement.indexOf('$') >= 0)) {
@@ -2174,7 +2174,7 @@ public class Function extends Expression implements FunctionCall {
         }
     }
 
-    private static int makeRegexpFlags(String stringFlags, boolean ignoreGlobalFlag) {
+    public static int makeRegexpFlags(String stringFlags, boolean ignoreGlobalFlag) {
         int flags = Pattern.UNICODE_CASE;
         if (stringFlags != null) {
             for (int i = 0; i < stringFlags.length(); ++i) {
