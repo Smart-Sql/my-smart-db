@@ -635,6 +635,9 @@ public class IgniteConfiguration {
     /** 超级管理员用户组 token */
     private String root_token = "";
 
+    /** 纯内存模式，默认是不开启的 */
+    private Boolean isCache = false;
+
     private Map<String, TableTemplateConfiguration> templateCfg;
 
     public boolean isMultiUserGroup() {
@@ -643,6 +646,15 @@ public class IgniteConfiguration {
 
     public IgniteConfiguration setMultiUserGroup(boolean multiUserGroup) {
         this.multiUserGroup = multiUserGroup;
+        return this;
+    }
+
+    public Boolean getCache() {
+        return isCache;
+    }
+
+    public IgniteConfiguration setCache(Boolean cache) {
+        this.isCache = cache;
         return this;
     }
 
@@ -691,6 +703,7 @@ public class IgniteConfiguration {
 
         // 扩展
         multiUserGroup = cfg.isMultiUserGroup();
+        isCache = cfg.getCache();
         root_token = cfg.getRoot_token();
         myLogCls = cfg.getMyLogCls();
         templateCfg = cfg.getTemplateConfiguration();
