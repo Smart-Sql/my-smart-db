@@ -1924,7 +1924,7 @@ public class JdbcThinResultSet implements ResultSet {
      * @throws SQLException On error.
      * @return Column order map.
      */
-    private Map<String, Integer> columnOrder() throws SQLException {
+    public Map<String, Integer> columnOrder() throws SQLException {
         if (colOrder != null)
             return colOrder;
 
