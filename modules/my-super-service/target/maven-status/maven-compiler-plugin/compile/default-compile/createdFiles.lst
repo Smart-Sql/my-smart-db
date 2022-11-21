@@ -28,6 +28,7 @@ cn/myservice/MyLoadCronService$InstanceHolder.class
 cn/myservice/MyConnectionService$InstanceHolder.class
 cn/myservice/MyThinStatementService.class
 cn/myservice/MySqlAstService.class
+cn/mysuper/service/IDawnSqlStart.class
 cn/myservice/MyInitFuncService.class
 cn/myservice/MyConnectionService$1.class
 cn/myservice/MyPlusFuncService.class

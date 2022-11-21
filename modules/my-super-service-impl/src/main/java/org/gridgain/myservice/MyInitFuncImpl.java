@@ -1,6 +1,8 @@
 package org.gridgain.myservice;
 
+import cn.mysuper.service.IDawnSqlStart;
 import cn.mysuper.service.IInitFunc;
+import com.google.common.base.Strings;
 import org.apache.ignite.*;
 import org.apache.ignite.cache.CacheMode;
 import org.apache.ignite.cache.query.SqlFieldsQuery;
@@ -106,11 +108,33 @@ public class MyInitFuncImpl implements IInitFunc {
             SmartFunc.initJob(ignite);
             // (SmartInit/mySmartInit ignite)
             SmartInit.mySmartInit(ignite);
+
+            // 加载一开始就执行的程序
+            loadAppCls(ignite);
             System.out.println("加载完成！");
         } catch (IgniteCheckedException var5) {
             var5.printStackTrace();
         }
 
+    }
+
+    // 加载一开始就执行的程序
+    private void loadAppCls(final Ignite ignite)
+    {
+        String clsName = ignite.configuration().getStartAppCls();
+        if (!Strings.isNullOrEmpty(clsName)) {
+            try {
+                Class<?> cls = Class.forName(clsName);
+                IDawnSqlStart dawnSqlStart = (IDawnSqlStart)cls.newInstance();
+                dawnSqlStart.start();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

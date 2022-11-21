@@ -7,19 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ignite-ml" />
-        <module name="ignite-schedule" />
-        <module name="my-super-service" />
-        <module name="ignite-core" />
         <module name="ignite-indexing" />
-        <module name="ignite-tensorflow" />
+        <module name="ignite-core" />
         <module name="ignite-geospatial" />
+        <module name="ignite-tensorflow" />
+        <module name="my-super-service" />
+        <module name="my-dawn-rpc-server" />
+        <module name="ignite-h2" />
+        <module name="my-back-up" />
+        <module name="ignite-schedule" />
         <module name="my-thin-client-service" />
         <module name="ignite-spring" />
-        <module name="my-back-up" />
-        <module name="my-thin-client" />
         <module name="my-super-service-impl" />
-        <module name="ignite-h2" />
+        <module name="ignite-ml" />
+        <module name="my-thin-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -33,6 +34,7 @@
       <module name="ignite-spring" target="1.8" />
       <module name="ignite-tensorflow" target="1.8" />
       <module name="my-back-up" target="1.8" />
+      <module name="my-dawn-rpc-server" target="1.8" />
       <module name="my-super-service" target="1.8" />
       <module name="my-super-service-impl" target="1.8" />
       <module name="my-thin-client" target="1.8" />

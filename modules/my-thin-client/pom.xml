@@ -59,11 +59,24 @@
       <version>${gridgain.version}</version>
     </dependency>
 
+<!--    <dependency>-->
+<!--      <groupId>smart-sql</groupId>-->
+<!--      <artifactId>smart-sql</artifactId>-->
+<!--      <version>0.1.0-SNAPSHOT</version>-->
+<!--    </dependency>-->
+
     <dependency>
-      <groupId>smart-sql</groupId>
-      <artifactId>smart-sql</artifactId>
+      <groupId>dawnsql</groupId>
+      <artifactId>dawnsql</artifactId>
       <version>0.1.0-SNAPSHOT</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.dawn.rpc</groupId>
+      <artifactId>my-dawn-rpc-server</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
     <dependency>
       <groupId>cn.mysuper</groupId>
       <artifactId>my-super-service</artifactId>

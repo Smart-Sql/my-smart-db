@@ -23,4 +23,12 @@ public class TableTemplateConfiguration implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "TableTemplateConfiguration{" +
+                "templateValue='" + templateValue + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

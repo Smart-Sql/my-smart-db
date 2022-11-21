@@ -638,7 +638,19 @@ public class IgniteConfiguration {
     /** 纯内存模式，默认是不开启的 */
     private Boolean isCache = false;
 
+    /** 开始执行的程序路径 */
+    private String startAppCls;
+
     private Map<String, TableTemplateConfiguration> templateCfg;
+
+    public String getStartAppCls() {
+        return startAppCls;
+    }
+
+    public IgniteConfiguration setStartAppCls(String startAppCls) {
+        this.startAppCls = startAppCls;
+        return this;
+    }
 
     public boolean isMultiUserGroup() {
         return multiUserGroup;
@@ -707,6 +719,7 @@ public class IgniteConfiguration {
         root_token = cfg.getRoot_token();
         myLogCls = cfg.getMyLogCls();
         templateCfg = cfg.getTemplateConfiguration();
+        startAppCls = cfg.getStartAppCls();
 
         // SPIs.
         discoSpi = cfg.getDiscoverySpi();

@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/modules/spring/ignite-spring.iml" filepath="$PROJECT_DIR$/modules/spring/ignite-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/tensorflow/ignite-tensorflow.iml" filepath="$PROJECT_DIR$/modules/tensorflow/ignite-tensorflow.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-back-up/my-back-up.iml" filepath="$PROJECT_DIR$/modules/my-back-up/my-back-up.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/my-dawn-rpc-server/my-dawn-rpc-server.iml" filepath="$PROJECT_DIR$/modules/my-dawn-rpc-server/my-dawn-rpc-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-super-service/my-super-service.iml" filepath="$PROJECT_DIR$/modules/my-super-service/my-super-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-super-service-impl/my-super-service-impl.iml" filepath="$PROJECT_DIR$/modules/my-super-service-impl/my-super-service-impl.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/my-thin-client/my-thin-client.iml" filepath="$PROJECT_DIR$/modules/my-thin-client/my-thin-client.iml" />

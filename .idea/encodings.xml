@@ -10,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/modules/ml/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/ml/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/my-back-up/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/my-dawn-rpc-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/my-super-service-impl/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/my-super-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/my-thin-client-service/src/main/java" charset="UTF-8" />

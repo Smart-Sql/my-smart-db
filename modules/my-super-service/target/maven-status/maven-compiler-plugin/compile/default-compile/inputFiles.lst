@@ -4,6 +4,7 @@
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/myservice/MyConnectionService.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IMyConnection.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IMySqlAst.java
+/Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IDawnSqlStart.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/myservice/MyInitFuncService.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/smart/service/IMyLoadCron.java
 /Users/chenfei/Documents/Java/SmartSql/gridgain/modules/my-super-service/src/main/java/cn/mysuper/service/IThinStatement.java

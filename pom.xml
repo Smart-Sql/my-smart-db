@@ -53,6 +53,7 @@
         <module>modules/my-super-service-impl</module>
         <module>modules/my-back-up</module>
         <module>modules/my-thin-client</module>
+        <module>modules/my-dawn-rpc-server</module>
         <module>modules/my-thin-client-service</module>
     </modules>
 

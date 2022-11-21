@@ -26,7 +26,8 @@ public class MySqlAstImpl implements IMySqlAst {
 
     @Override
     public Object sqlToAst(List lst) {
-        return  MySelectPlus.sqlToAst((ArrayList) lst);
+        MySelectPlus mySelectPlus = new MySelectPlus();
+        return  mySelectPlus.sqlToAst((ArrayList) lst);
     }
 
     @Override
